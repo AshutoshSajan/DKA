@@ -10,9 +10,10 @@ var userSchema = new Schema({
 	},
 	email: {
 		type: String,
-		default: ""
+		unique: true,
+		reqired: true
 	},
-	age: {
+	dob: {
 		type: String,
 		default: ""
 	},
@@ -27,6 +28,10 @@ var userSchema = new Schema({
 	verified: {
 		type: Boolean,
 		default: false,
+	},
+	token: {
+		type: String,
+		default: ""
 	},
 	isAdmin: {
 		type: Boolean,
