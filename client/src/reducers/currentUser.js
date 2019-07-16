@@ -14,7 +14,7 @@ function currentUser(state = initialState, action) {
       }
     
     case 'USER_LOGIN_FAILED':
-      localStorage.clear();
+      localStorage.removeItem('jwt');
       return {
         ...state,
         isAuthInProgress: false,

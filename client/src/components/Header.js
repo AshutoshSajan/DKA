@@ -11,12 +11,13 @@ class Header extends Component {
 	};
 
 	render() {
+		console.log(this.props, "headre props");
 		const { user } = this.props || null;
 
 		return (
 			<nav className="navbar navbar-expand-lg navbar-light bg-light">
 			  <Link to="/" className="navbar-brand">
-			  	<img className="logo" src="icon.png" alt="logo" />
+			  	<img className="logo" src="/dka.jpeg" alt="logo" />
 			  </Link>
 			  <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			    <span className="navbar-toggler-icon"></span>
@@ -26,23 +27,36 @@ class Header extends Component {
 			    <ul className="navbar-nav mr-auto">
 			    
 			      <li className="nav-item">
-				      <Link to="/quiz" className="nav-link">Battle ground</Link>
+				      <Link to="/" className="nav-link">About</Link>
 			      </li>
 			      <li className="nav-item">
-				      <Link to="/leaderBoard" className="nav-link">Dashboard</Link>
+				      <Link to="/" className="nav-link">Students</Link>
 				    </li>
-
 			    </ul>
 			    {
 			    	user && user.isAuthInProgress ?
 						    <form className="form-inline my-2 my-lg-0">
-						      <Link to="/login" className="hdr-btn btn btn-outline-success my-2 my-sm-0" type="submit">Login</Link>
-						      <Link to="/register" className="hdr-btn btn btn-outline-success my-2 my-sm-0" type="submit">Sign-Up</Link>
+						      <Link 
+						      	to="/users/login"
+						      	className="hdr-btn btn btn-outline-success my-2 my-sm-0"
+						      	type="submit">
+						      	Login
+						      </Link>
+						      <Link
+						      	to="/users/register"
+						      	className="hdr-btn btn btn-outline-success my-2 my-sm-0"
+						      	type="submit">
+						      	Sign-Up
+						      </Link>
 						    </form>
 						  : 
 							<>
 								<LoggedInUser/>
-							  <a className="hdr-btn btn" href="/" onClick={ this.handleLogout }> Logout </a>
+							  <button 
+							  	className="hdr-btn btn" 
+							  	onClick={ this.handleLogout }>
+							  		Logout
+							  </button>
 						  </>
 					}
 			  </div>
@@ -52,7 +66,7 @@ class Header extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return { user: state.user }
+  return { state };
 }
 
 export default withRouter(connect(mapStateToProps)(Header));

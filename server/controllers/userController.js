@@ -16,6 +16,15 @@ module.exports = {
 		})
 	}
 
+	login = (req, res) => {
+		User.create(req.body, (err,user) => {
+			if(err) return res.status(500).json({ success: false, error: err })
+			if(user){
+				
+			}
+		})
+	}
+
 	verifyToken = (req,res) => {
 		User.findOne({ _id: req.user.id }, (err,user) => {
 			if(err) res.status(500).send(err);

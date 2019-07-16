@@ -5,6 +5,8 @@ var userController = require('../../controllers/userController');
 
 router.get('/', userController.getAllUsers);
 router.get('/:id', userController.getUser);
+router.get('/login', userController.login);
+router.get('/register', userController.register);
 router.get('/verify', userController.verifyToken);
 router.get('/update', userController.updategetUser);
 router.get('/delete', userController.deleteUser);
