@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-// var bcrypt = require('bcrypt');
-// const salt = bcrypt.genSaltSync(10);
+var bcrypt = require('bcrypt');
+const salt = bcrypt.genSaltSync(10);
 
 var userSchema = new Schema({
 	username: {
@@ -52,9 +52,9 @@ var userSchema = new Schema({
 }, { timeStamp: true });
 
 userSchema.pre('save', function (next) {
-	// if(this.password && this.isModified('password')){
-	// 	this.password = bcrypt.hashSync(this.password, salt);
-	// }
+	if(this.password && this.isModified('password')){
+		this.password = bcrypt.hashSync(this.password, salt);
+	}
 
 	if(this.email === process.env.MAIL || this.email === process.env.ADMIN){
 		this.isAdmin = true;
