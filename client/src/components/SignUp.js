@@ -41,15 +41,8 @@ class SignUp extends Component {
 		const { username, password, email, terms, confirmPassword } = this.state.user;
 
 		e.preventDefault();
-		// fetch("http://localhost:3000/api/v1/users/register", {
-		// 	method: "POST",
-		// 	header: {
 
-		// 	},
-		// 	body:
-		// })
-
-		// write an email validation function
+		// TODO: write an email validation function
 		
 		if(pasword.length >= 8 && password === confirmPassword ){
 			if(username.length >= 3 && email.include("@gmail.com") && terms && confirmPassword){
@@ -64,7 +57,7 @@ class SignUp extends Component {
 		  			this.setState( { error: "Please fill all the information" });
 		  		}
 			  })
-			  .catch(function (error) {
+			  .catch(error => {
 			    console.log(error, "exios fetch error!");
 			  });
 			}
