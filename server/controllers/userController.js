@@ -1,4 +1,4 @@
-// var User = require ('../models/Users');
+var User = require ('../models/User');
 
 
 module.exports = {
@@ -17,15 +17,17 @@ module.exports = {
 	},
 
 	login : (req, res) => {
-		User.find(req.body, (err,user) => {
+		console.log(req.body, "login data");
+		User.findOne({ email: req.body.email }, (err,user) => {
 			if(err) return res.status(500).json({ success: false, error: err })
 			if(user){
-				
+				res.status(200).json({ success: true, user })
 			}
 		})
 	},
 
 	register: (req, res) => {
+		console.log(req.body, "inside register user");
 		User.create(req.body, (err,user) => {
 			if(err) return res.status(500).json({ success: false, error: err })
 			if(user){

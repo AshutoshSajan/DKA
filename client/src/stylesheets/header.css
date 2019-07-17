@@ -1,6 +1,11 @@
+.header {
+	position: fixed;
+	width: 95%;
+}
+
 .navbar {
 	padding: 1.2rem 1.4rem;
-	/*margin: 1.2rem 2.4rem;*/
+	margin: 1.2rem;
 	position: relative;
 }
 
@@ -48,6 +53,30 @@
 	border-radius: 50%;
 	height: 100%;
 	width: 100%;
+}
+
+.tournaments-list span{
+	color: #fff;
+	font-size: 1.2rem;
+}
+
+.tournaments-list {
+	position: relative;
+}
+
+.tournaments {
+	display: none;
+}
+
+.tournaments li {
+	padding: 6px 10px;
+	margin-left: 0;
+}
+
+.tournaments-list:hover .tournaments {
+	background-color: #2aa4b0;
+	display: block;
+	position: absolute;
 }
 
 @media all end(max-width: 320px){

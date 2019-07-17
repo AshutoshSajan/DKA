@@ -1,1 +1,0 @@
-var userRouter = require('./users');

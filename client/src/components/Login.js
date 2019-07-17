@@ -20,15 +20,15 @@ class Login extends Component {
   }
 
   handleLogin = (e) => {
-  	console.log("login fn()");
   	e.preventDefault();
+  	console.log("login fn()");
 
-  	axios.post('http://api/v1/users/login', JSON.stringify(this.state.user))
+  	axios.post('http://localhost:3000/api/v1/users/login', this.state.user)
 	  .then((res) => {
-	    console.log(res, "data");
+	    console.log(res, "login data");
 	    if(res.data.success){
   			localStorage.setItem("jwt", res.data.token);
-  			this.props.dispatch({ type: "REGISTER_USER", payload: res.data });
+  			this.props.dispatch({ type: "USER_LOGIN_SUCCESS", data: res.data });
   			this.setState({ user: {} });
   			this.props.history.push('/');
   		}

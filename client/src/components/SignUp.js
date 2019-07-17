@@ -39,13 +39,19 @@ class SignUp extends Component {
 
 	handleRegister = (e) => {
 		e.preventDefault();
-		axios.post('/users/register', this.state.user)
+		// fetch("http://localhost:3000/api/v1/users/register", {
+		// 	method: "POST",
+		// 	header: {
+
+		// 	},
+		// 	body:
+		// })
+		axios.post('http://localhost:3000/api/v1/users/register', this.state.user)
 	  .then((res) => {
 	    console.log(res, "data");
 	    if(res.data.success){
-  			this.props.dispatch({ type: "REGISTER_USER", payload: res.data });
   			this.setState({ user: {} });
-  			this.props.history.push('/login');
+  			this.props.history.push('/users/login');
   		}
 	  })
 	  .catch(function (error) {

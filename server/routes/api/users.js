@@ -5,10 +5,10 @@ var userController = require('../../controllers/userController');
 
 router.get('/', userController.getAllUsers);
 router.get('/:id', userController.getUser);
-router.get('/login', userController.login);
-router.get('/register', userController.register);
+router.post('/login', userController.login);
+router.post('/register', userController.register);
 router.get('/verify', userController.verifyToken);
-router.get('/update', userController.updateUser);
-router.get('/delete', userController.deleteUser);
+router.put('/update', userController.updateUser);
+router.delete('/delete', userController.deleteUser);
 
 module.exports = router;
