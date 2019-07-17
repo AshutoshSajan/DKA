@@ -44,7 +44,7 @@ class SignUp extends Component {
 
 		// TODO: write an email validation function
 		
-		if(pasword.length >= 8 && password === confirmPassword ){
+		if(password.length >= 8 && password === confirmPassword ){
 			if(username.length >= 3 && email.include("@gmail.com") && terms && confirmPassword){
 				axios.post('http://localhost:3000/api/v1/users/register', this.state.user)
 			  .then((res) => {

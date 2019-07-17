@@ -6,7 +6,10 @@ const axios = require('axios');
 class Login extends Component {
 	
 	state ={
-    user: {}
+    user: {
+    	email:"",
+    	password:""
+    }
   }
 
   handleChange = (e) => {

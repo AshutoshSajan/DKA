@@ -80,8 +80,38 @@
 	position: absolute;
 }
 
-@media all end(max-width: 320px){
+/*.label {
+	display: none;
+}
+
+.show {
+	display: flex;
+}
+
+.hide {
+	display: none;
+}*/
+
+@media all and (max-width: 600px){
+	.nav-ul {
+		display: none;
+	}
+
+	.label {
+		display: block;
+	}
+}
+
+@media all and (max-width: 420px){
 	:root: {
 		font-size: 8px;
+	}
+
+	.label {
+		display: block;
+	}
+
+	.nav-ul {
+		display: none;
 	}
 }
