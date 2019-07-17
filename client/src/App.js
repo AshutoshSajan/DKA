@@ -11,6 +11,7 @@ import Profile from './components/Profile';
 import EditProfile from './components/EditProfile';
 import PrivateRoute from './components/PrivateRoute';
 
+
 class App extends Component {
 
 	componentDidMount() {
@@ -49,4 +50,5 @@ function mapStateToProps(state){
 	console.log(state, "app map state");
 	return { state }
 }
+
 export default connect(mapStateToProps)(App);

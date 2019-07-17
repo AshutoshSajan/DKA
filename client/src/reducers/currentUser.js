@@ -5,7 +5,6 @@ const initialState = {
 }
 
 function currentUser(state = initialState, action) {
-  console.log(action.data);
   switch (action.type) {
     case 'USER_LOGIN_SUCCESS':
       return {

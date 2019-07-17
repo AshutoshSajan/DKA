@@ -63,7 +63,7 @@ if (process.env.NODE_ENV === "development") {
 }
 
 // Route handler
-app.use('/api/v1', apiRouter);
+app.use('/api/v1', apiRouter)
 app.use('/', indexRouter);
 
 

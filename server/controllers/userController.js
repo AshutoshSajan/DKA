@@ -36,7 +36,16 @@ module.exports = {
 		})
 	},
 
-	verifyToken : (req,res) => {
+	login: (req, res) => {
+		User.create(req.body, (err,user) => {
+			if(err) return res.status(500).json({ success: false, error: err })
+			if(user){
+				res.status(200).json({ success: true, user })
+			}
+		})
+	},
+
+	verifyToken: (req,res) => {
 		User.findOne({ _id: req.user.id }, (err,user) => {
 			if(err) res.status(500).send(err);
 			res.status(200).json({ success: true, user });

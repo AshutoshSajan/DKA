@@ -19,12 +19,7 @@ const PrivateRoute = ({component: Component, ...rest}) => {
   );
 };
 
-// PrivateRoute.propTypes = {
-//   isAuthenticated: PropTypes.bool.isRequired,
-// };
-
 function mapStateToProps(state) {
-  console.log(state);
   return {
     isAuthenticated: state.user.isAuthenticated,
   };

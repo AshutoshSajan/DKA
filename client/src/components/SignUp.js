@@ -5,16 +5,13 @@ const axios = require('axios');
 
 class SignUp extends Component {
 
-	constructor(props){
-		super(props);
-		this.state = {
-			user: {
-				username: "",
-				password: "",
-				email: "",
-				terms: false,
-				confirmPassword: ""
-			}
+	state = {
+		user: {
+			username: "",
+			password: "",
+			email: "",
+			terms: false,
+			confirmPassword: ""
 		}
 	}
 
@@ -71,9 +68,13 @@ class SignUp extends Component {
 			<div className='login'>
 				<form>
 				  <h2>Register</h2>
-				  {/*<div className="logo">
-						<img src="../../public/icon.png" alt="logo" />
-					</div>*/}
+				  {
+				  	/*
+				  	<div className="logo">
+							<img src="../../public/icon.png" alt="logo" />
+						</div>
+						*/
+					}
 					<p className="register-error" >{this.state.error || ""}</p>
 				  <input onChange={this.handleChange} name='username' placeholder='Username' type='text' value={ this.state.user.username } required/>
 				  <input onChange={this.handleChange} id='pw' name='password' placeholder='Password' type='password' value={ this.state.user.password } required/>

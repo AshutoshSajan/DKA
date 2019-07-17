@@ -9,5 +9,4 @@ router.get('/*', function (req, res, next) {
   res.json({success: true, message: 'Welcome to Node APIs'});
 });
 
-
 module.exports = router;

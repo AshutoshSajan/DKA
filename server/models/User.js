@@ -10,7 +10,9 @@ var userSchema = new Schema({
 	},
 	password: {
 		type: String,
-		default: ""
+		default: "",
+		min: 8,
+		max: 20
 	},
 	email: {
 		type: String,
