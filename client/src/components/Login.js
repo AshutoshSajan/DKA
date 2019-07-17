@@ -27,7 +27,7 @@ class Login extends Component {
 	  .then((res) => {
 	    console.log(res, "login data");
 	    if(res.data.success){
-  			localStorage.setItem("jwt", res.data.token);
+  			localStorage.setItem("jwt", JSON.stringify(res.data.user));
   			this.props.dispatch({ type: "USER_LOGIN_SUCCESS", data: res.data });
   			this.setState({ user: {} });
   			this.props.history.push('/');
@@ -53,7 +53,7 @@ class Login extends Component {
 
 			  <div className="login-flex">
 			  	<p className='forgot'>Don't have an account?</p>
-			  	<Link to="/register">Register</Link>
+			  	<Link to="/users/register">Register</Link>
 			  </div>
 			</div>
 		);

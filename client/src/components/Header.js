@@ -6,13 +6,13 @@ import LoggedInUser from "./LoggedInUser";
 class Header extends Component {
 
 	handleLogout = (e) => {
-		window.localStorage.clear();
+		localStorage.removeItem("jwt");
 		this.props.history.push("/login");
 	};
 
 	render() {
 		const { user } = this.props || null;
-		console.log(this.props, user.user, user.isAuthInProgress, "headre props");
+		console.log(this.props, user, user.isAuthInProgress, "header props");
 
 		return (
 			<header className="header">
@@ -48,13 +48,13 @@ class Header extends Component {
 						    	<span className="">Tournaments</span>
 						    	<ul className="tournaments">
 						    	 	<li>
-						      		<Link to="/learn" className="nav-link">State</Link>
+						      		<Link to="/state" className="nav-link">State</Link>
 						      	</li>
 						      	<li>
-						      		<Link to="/learn" className="nav-link">District</Link>
+						      		<Link to="/district" className="nav-link">District</Link>
 						      	</li>
 						      	<li>
-						      		<Link to="/learn" className="nav-link">Nationals</Link>
+						      		<Link to="/national" className="nav-link">National</Link>
 						      	</li>
 						      </ul>
 						    </li>
@@ -101,6 +101,7 @@ class Header extends Component {
 }
 
 const mapStateToProps = (state) => {
+	console.log(state, "hdr map state");
   return { user: state.currentUser };
 }
 

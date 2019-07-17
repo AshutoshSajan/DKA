@@ -1,17 +1,17 @@
 .header {
-	position: fixed;
-	width: 95%;
+	/*position: fixed;*/
+	/*width: 100%;*/
 }
 
 .navbar {
-	padding: 1.2rem 1.4rem;
+	padding: 1.2rem 1rem;
 	margin: 1.2rem;
 	position: relative;
 }
 
 .navbar, .nav-ul {
 	display: flex;
-	/*flex-wrap: wrap;*/
+	flex-wrap: wrap;
 	justify-content: space-between;
 	align-items: center;	
 	background-color: #111;
@@ -42,7 +42,7 @@
 	position: absolute;
 	transform: translateY(-50%);
 	top: 50%;
-	left: 3%;
+	left: 1.6rem;
 	border-radius: 50%;
 	height: 6.4rem;
 	width: 6.4rem;
@@ -75,6 +75,7 @@
 
 .tournaments-list:hover .tournaments {
 	background-color: #2aa4b0;
+	/*margin-top: 10px;*/
 	display: block;
 	position: absolute;
 }

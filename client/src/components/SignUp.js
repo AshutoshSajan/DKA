@@ -38,6 +38,8 @@ class SignUp extends Component {
 	}
 
 	handleRegister = (e) => {
+		const { username, password, email, terms, confirmPassword } = this.state.user;
+
 		e.preventDefault();
 		// fetch("http://localhost:3000/api/v1/users/register", {
 		// 	method: "POST",
@@ -46,17 +48,29 @@ class SignUp extends Component {
 		// 	},
 		// 	body:
 		// })
-		axios.post('http://localhost:3000/api/v1/users/register', this.state.user)
-	  .then((res) => {
-	    console.log(res, "data");
-	    if(res.data.success){
-  			this.setState({ user: {} });
-  			this.props.history.push('/users/login');
-  		}
-	  })
-	  .catch(function (error) {
-	    console.log(error, "exios fetch error!");
-	  });
+
+		// write an email validation function
+		
+		if(pasword.length >= 8 && password === confirmPassword ){
+			if(username.length >= 3 && email.include("@gmail.com") && terms && confirmPassword){
+				axios.post('http://localhost:3000/api/v1/users/register', this.state.user)
+			  .then((res) => {
+			    console.log(res, "data");
+			    if(res.data.success){
+		  			this.setState({ user: {} });
+		  			this.props.history.push('/users/login');
+		  		} else {
+		  			console.log(res.error, "register err");
+		  			this.setState( { error: "Please fill all the information" });
+		  		}
+			  })
+			  .catch(function (error) {
+			    console.log(error, "exios fetch error!");
+			  });
+			}
+		}else {
+			this.setState({ error: "Please fill all the information" })
+		}
 	}
 
 	render() {
@@ -67,6 +81,7 @@ class SignUp extends Component {
 				  {/*<div className="logo">
 						<img src="../../public/icon.png" alt="logo" />
 					</div>*/}
+					<p className="register-error" >{this.state.error || ""}</p>
 				  <input onChange={this.handleChange} name='username' placeholder='Username' type='text' value={ this.state.user.username } required/>
 				  <input onChange={this.handleChange} id='pw' name='password' placeholder='Password' type='password' value={ this.state.user.password } required/>
 				  <input onChange={this.handleChange} name='confirmPassword' placeholder='Confirm password' type='password' value={ this.state.user.confirmPassword} required/>
@@ -79,7 +94,7 @@ class SignUp extends Component {
 				  </form>
 				  <div className="login-flex">
 				  	<p className='forgot'>Already have an account?</p>
-			  		<Link to="/login"><strong>Login</strong></Link>
+			  		<Link to="/users/login"><strong>Login</strong></Link>
 				  </div>
 			</div>
 		);
