@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 
-class Register extends Component {
+class campForm extends Component {
 	render() {
 		return (
-			<div className="container" style={{ border: "1px solid rgba(0,0,0,0.2)", padding: "2.5rem 4rem", borderRadius:'4px', width: "50%"}}>
+			<div className="container" style={{ border: "1px solid rgba(0,0,0,0.2)", padding: "40px 60px", borderRadius:'4px', width: "800px"}}>
 				<div style={{ display: "flex" , justifyContent:'space-between', flexWrap:'wrap'}}>
 					<div className="field">
 					  <div className="field">
@@ -202,4 +202,4 @@ class Register extends Component {
 	}
 }
 
-export default Register;
+export default campForm;
