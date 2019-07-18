@@ -1,7 +1,8 @@
-var express = require(express');
+var express = require('express');
 var router = express.Router();
+var jwt = require('jsonwebtoken');
 
-exports = function(req,res,next){
+module.exports.varifyToken = function(req,res,next){
 	var token = req.headers.Authorization || req.headers.authorization || "";
 	if(token){
 		jwt.varify(token, process.env.SIGN, (err, decoded) => {

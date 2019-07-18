@@ -16,23 +16,25 @@ import PrivateRoute from './components/PrivateRoute';
 class App extends Component {
 
 	componentDidMount() {
-		// fetch('http://localhost/api/v1/me',{
-		// 	header: {
-		// 		Content: appliation/json,
-		// 		Authentication: `Token ${localStorage.getItem(jwt)}`
-		// 	}
-		// })
-		// .then(res => res.json())
-		// .then(data => {
-		// 	console.log(data)
-		// })
+    axios.post('http://localhost:3000/api/v1/users/me', { headers: {"Authorization" : localStorage.getItem("jwt") }})
+    .then((res) => {
+      console.log(res, "login data");
+      if(res.data.success){
+        console.log(data, "/me response");
+        this.props.dispatch({ type: "USER_LOGIN_SUCCESS", data: res.data });
+        this.props.history.push('/');
+      }
+    })
+    .catch(function (error) {
+      console.log(error, "catch error");
+    });
 	}
 
   render() {
     return (
       <div className="App">
-      	<Header />
         <Router >
+          <Header />
           <Switch>
             <Route exact path="/" component = {Home}/>
           	<Route path="/users/login" component = {Login}/>

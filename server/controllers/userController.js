@@ -1,5 +1,6 @@
 var User = require ('../models/User');
-
+var jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
 
 module.exports = {
 	getAllUsers: (req,res) => {
@@ -17,30 +18,48 @@ module.exports = {
 	},
 
 	login : (req, res) => {
-		console.log(req.body, "login data");
+		console.log(req.body, "login data check1");
 		User.findOne({ email: req.body.email }, (err,user) => {
+			console.log(req.body, "login data check2");
+
 			if(err) return res.status(500).json({ success: false, error: err })
 			if(user){
-				res.status(200).json({ success: true, user })
+				console.log(req.body, "login data check3");
+
+				var isValidPassword = bcrypt.compareSync(req.body.password, user.password);
+				console.log(isValidPassword, "isValidPassword..");
+				var token = jwt.sign({ id: user._id }, process.env.SIGN);
+				if(!isValidPassword){
+					console.log(req.body, "login data check4");
+
+					res.status(401).json({ success: false, massage: "Invalid pasword" })
+				} else if(isValidPassword){
+					res.status(200).json({ success: true, user, token })
+				}
 			}
 		})
 	},
 
 	register: (req, res) => {
 		console.log(req.body, "inside register user");
-		User.create(req.body, (err,user) => {
-			if(err) return res.status(500).json({ success: false, error: err })
-			if(user){
-				res.status(200).json({ success: true, massage: "user registerd succesfully" })
-			}
-		})
-	},
+		console.log("register check 1");
 
-	login: (req, res) => {
-		User.create(req.body, (err,user) => {
-			if(err) return res.status(500).json({ success: false, error: err })
+		User.findOne({ email: req.body.email }, (err, user) => {
+			console.log("register check 2");
+
+			if(err) return res.status(500).json({ success: false, error: err, message: "server side error" });
 			if(user){
-				res.status(200).json({ success: true, user })
+				console.log("register check 3");
+				res.status(302).json({ success: false, message: "User already exist" })
+			} if (!user) {
+				console.log("register check 4");
+
+				User.create(req.body, (err,user) => {
+					if(err) return res.status(500).json({ success: false, error: err })
+					if(user){
+						res.status(200).json({ success: true, massage: "user registerd succesfully" })
+					}
+				})
 			}
 		})
 	},

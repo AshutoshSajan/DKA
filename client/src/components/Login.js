@@ -30,7 +30,7 @@ class Login extends Component {
 	  .then((res) => {
 	    console.log(res, "login data");
 	    if(res.data.success){
-  			localStorage.setItem("jwt", JSON.stringify(res.data.user));
+  			localStorage.setItem("jwt", res.data.token);
   			this.props.dispatch({ type: "USER_LOGIN_SUCCESS", data: res.data });
   			this.setState({ user: {} });
   			this.props.history.push('/');

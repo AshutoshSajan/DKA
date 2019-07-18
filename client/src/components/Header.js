@@ -20,7 +20,7 @@ class Header extends Component {
 
 	render() {
 		const { user } = this.props || null;
-		console.log(this.props, user, user.isAuthInProgress, "header props");
+		// console.log(this.props, user, user.isAuthInProgress, "header props");
 
 		return (
 			<nav className="navbar" role="navigation" aria-label="main navigation">
@@ -42,7 +42,6 @@ class Header extends Component {
 
 			  <div id="navbarBasicExample" className="navbar-menu">
 			    <div className="navbar-start">
-						<Router>
 							<Link to="/" className="navbar-item">Home</Link>
 
 				      <Link to="/students" className="navbar-item">Students</Link>
@@ -51,7 +50,6 @@ class Header extends Component {
 				      <Link to="/learn" className="navbar-item">Learn</Link>
 				      <Link to="/camps" className="navbar-item">Camps</Link>
 				      <Link to="/documentation" className="navbar-item">Documentation</Link>
-				    </Router>
 
 			      <div className="navbar-item has-dropdown is-hoverable">
 			        <a className="navbar-link">
@@ -59,14 +57,12 @@ class Header extends Component {
 			        </a>
 
 			        <div className="navbar-dropdown">
-				        <Router>
 				      		<Link to="/state" className="navbar-item">State</Link>
 				      		<Link to="/district" className="navbar-item">District</Link>
 				      		<Link to="/national" className="navbar-item">National</Link>
 				          <a className="navbar-item">
 				            Report an issue
 				          </a>
-				        </Router>
 			        </div>
 			      </div>
 			    </div>
@@ -75,7 +71,7 @@ class Header extends Component {
 			    	{
 							!user.user && user.isAuthInProgress ?
 					      <div className="navbar-item">
-					        <Router className="buttons">
+					        <div className="buttons">
 					          <Link
 											to="/users/register"
 							      	className="button is-primary">
@@ -86,7 +82,7 @@ class Header extends Component {
 						      		className="button is-primary">
 						      		Login
 						      	</Link>
-					        </Router>
+					        </div>
 					      </div>
 			      	:
 					    <div className="buttons">
@@ -110,4 +106,4 @@ const mapStateToProps = (state) => {
   return { user: state.currentUser };
 }
 
-export default connect(mapStateToProps)(Header);
+export default withRouter(connect(mapStateToProps)(Header));
