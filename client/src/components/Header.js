@@ -86,12 +86,12 @@ class Header extends Component {
 					      </div>
 			      	:
 					    <div className="buttons">
-				      	<button 
+				      	<a
 				      		to="/users/login"
 				      		className="button is-primary"
 				      		onClick={ this.handleLogout }>
 				      		Logout
-				      	</button>
+				      	</a>
 				      </div>
 			    	}
 			    </div>

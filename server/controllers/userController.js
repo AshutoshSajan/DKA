@@ -4,6 +4,8 @@ const bcrypt = require('bcrypt');
 
 module.exports = {
 	getAllUsers: (req,res) => {
+		console.log("getalluser");
+
 		User.find({}, (err, users) => {
 			if(err) res.status(500).send(err);
 			res.status(200).json({ success: true, users });
@@ -11,6 +13,7 @@ module.exports = {
 	},
 
 	getUser: (req, res) => {
+		console.log(req.params.id, "getuser");
 		User.findOne({ _id: req.params.id }, (err,user) => {
 			if(err) res.status(500).send(err);
 			res.status(200).json({ success: true, user });
@@ -65,6 +68,7 @@ module.exports = {
 	},
 
 	verifyToken: (req,res) => {
+		console.log(req.user, "insede /me");
 		User.findOne({ _id: req.user.id }, (err,user) => {
 			if(err) res.status(500).send(err);
 			res.status(200).json({ success: true, user });

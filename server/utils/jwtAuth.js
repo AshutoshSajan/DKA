@@ -2,17 +2,17 @@ var express = require('express');
 var router = express.Router();
 var jwt = require('jsonwebtoken');
 
-module.exports.varifyToken = function(req,res,next){
+exports.verifyToken = function(req, res, next){
 	var token = req.headers.Authorization || req.headers.authorization || "";
-	if(token){
-		jwt.varify(token, process.env.SIGN, (err, decoded) => {
-			if (err) {
-				console.log(err, "token validation err")
-				res.status(500).json({ success: false, message: "Invalid token" })
-			} else if(decoded){
-				console.log(decoded, "valid token");
+	if(!token) {
+    return res.status(401).send({ message: 'Please authenticate... '});
+  } else if(token){
+			jwt.verify(token, process.env.SIGN, function(err, decoded){
+			if(err) {
+				return res.status(500).json({ success: false, message: "Token validation error" });
+			} else if(decoded && decoded.id){
 				req.user = decoded;
-				next();
+				return next();
 			}
 		})
 	}
