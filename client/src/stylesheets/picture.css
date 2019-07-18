@@ -1,0 +1,10 @@
+.hero-image {
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+	object-position: 50% -50% !important;
+}
+
+.carousel-inner {
+	height: 25rem;
+}
