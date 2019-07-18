@@ -87,5 +87,31 @@ module.exports = {
 			if(err) res.status(500).send(err);
 			res.status(200).json({ success: true, user });
 		})
+	},
+
+	getAllStudents: (req,res) => {
+		console.log("inside all students");
+
+		User.find({isStudent: true}, (err, users) => {
+			if(err) {
+				return res.status(500).json({ success: false, error: err, massage: "Server error" });
+			}
+			if(users){
+				return res.status(200).json({ success: true, users });
+			}
+		})
+	},
+	
+	getInstructors: (req,res) => {
+		console.log("inside all students");
+
+		User.find({ isSenior: true}, (err, users) => {
+			if(err) {
+				return res.status(500).json({ success: false, error: err, massage: "Server error" });
+			}
+			if(users){
+				return res.status(200).json({ success: true, users });
+			}
+		})
 	}
 }

@@ -9,6 +9,8 @@ router.post('/register', userController.register);
 router.get('/me', jwtAuth.verifyToken, userController.verifyToken);
 router.put('/update', jwtAuth.verifyToken, userController.updateUser);
 router.delete('/delete', jwtAuth.verifyToken, userController.deleteUser);
+router.get('/students/', jwtAuth.verifyToken, userController.getAllStudents);
+router.get('/instructors/', jwtAuth.verifyToken, userController.getInstructors);
 router.get('/:id', jwtAuth.verifyToken, userController.getUser);
 
 module.exports = router;

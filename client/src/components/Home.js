@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 
 class Home extends Component {
+
 	render() {
-		return (
+		return ( 
 			<div>
-				
 			</div>
 		);
 	}

@@ -10,6 +10,10 @@ import Header from './components/Header';
 import SignUp from './components/SignUp';
 // import Footer from './components/Footer';
 import Profile from './components/Profile';
+import Students from './components/Students'
+// import Instructors from './components/Instructors'
+
+import Register from './components/Register';
 import EditProfile from './components/EditProfile';
 import PrivateRoute from './components/PrivateRoute';
 
@@ -48,7 +52,9 @@ class App extends Component {
         	<Route path="/users/login" component = {Login}/>
         	<Route path="/users/register" component = {SignUp}/>
         	<Route path="/users/profile" component = {Profile}/>
-        	<Route path="/users/:id" component = {EditProfile}/>
+        	<Route path="/users/apply" component = {Register}/>
+          <Route path="/users/students" component = {Students}/>
+          <Route path="/users/:id" component = {EditProfile}/>
         </Switch>
       </div>
     );

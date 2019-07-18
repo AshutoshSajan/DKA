@@ -47,7 +47,7 @@ class Header extends Component {
 				      <Link to="/students" className="navbar-item">Students</Link>
 				      <Link to="/instructors" className="navbar-item">Instructors</Link>
 				      <Link to="/contact" className="navbar-item">Contact</Link>
-				      <Link to="/learn" className="navbar-item">Learn</Link>
+				      <Link to="/users/apply" className="navbar-item">Learn</Link>
 				      <Link to="/camps" className="navbar-item">Camps</Link>
 				      <Link to="/documentation" className="navbar-item">Documentation</Link>
 
