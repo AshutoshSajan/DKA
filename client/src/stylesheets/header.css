@@ -1,117 +1,12 @@
-.header {
-	position: fixed;
-	width: 100%;
-}
-
 .navbar {
-	padding: 1.2rem 1rem;
-	margin: 1.2rem;
-	position: relative;
+	padding-left: 20px;
+	padding-right: 20px; 
 }
 
-.navbar, .nav-ul {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between;
-	align-items: center;	
-	background-color: #111;
-}
-
-.about-sec {
-	margin-left: 6%;
-}
-
-.nav-ul li{
-	font-size: 1.2rem;
-	margin: 0 1.2rem;
-}
-
-.nav-ul li a {
-	color: #f3f3f3;
-}
-
-.hdr-btn {
-	background-color: #11704d;
-	padding: 0.5rem 1rem;
-	border-radius: 0.2rem; 
-	color: #fff;
-	font-size: 1.2rem;
-}
-
-.logo-container {
-	position: absolute;
-	transform: translateY(-50%);
-	top: 50%;
-	left: 1.6rem;
-	border-radius: 50%;
-	height: 6.4rem;
-	width: 6.4rem;
-	/*box-shadow: 2px 4px 3px solid rgba(0,0,0,0.5);*/
+.button {
+	margin: 0 10px;
 }
 
 .logo {
 	border-radius: 50%;
-	height: 100%;
-	width: 100%;
-}
-
-.tournaments-list span{
-	color: #fff;
-	font-size: 1.2rem;
-}
-
-.tournaments-list {
-	position: relative;
-}
-
-.tournaments {
-	display: none;
-}
-
-.tournaments li {
-	padding: 6px 10px;
-	margin-left: 0;
-}
-
-.tournaments-list:hover .tournaments {
-	background-color: #2aa4b0;
-	/*margin-top: 10px;*/
-	display: block;
-	position: absolute;
-}
-
-/*.label {
-	display: none;
-}
-
-.show {
-	display: flex;
-}
-
-.hide {
-	display: none;
-}*/
-
-@media all and (max-width: 600px){
-	.nav-ul {
-		display: none;
-	}
-
-	.label {
-		display: block;
-	}
-}
-
-@media all and (max-width: 420px){
-	:root: {
-		font-size: 8px;
-	}
-
-	.label {
-		display: block;
-	}
-
-	.nav-ul {
-		display: none;
-	}
 }

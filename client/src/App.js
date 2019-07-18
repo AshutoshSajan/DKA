@@ -5,8 +5,9 @@ import { connect } from 'react-redux';
 import Home from './components/Home';
 import Login from './components/Login';
 import Header from './components/Header';
+
 import SignUp from './components/SignUp';
-import Footer from './components/Footer';
+// import Footer from './components/Footer';
 import Profile from './components/Profile';
 import EditProfile from './components/EditProfile';
 import PrivateRoute from './components/PrivateRoute';
@@ -40,7 +41,6 @@ class App extends Component {
           	<Route path="/users/:id" component = {EditProfile}/>
           </Switch>
         </Router>
-        <Footer />
       </div>
     );
   }

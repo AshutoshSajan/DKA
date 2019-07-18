@@ -51,7 +51,7 @@ class Login extends Component {
 					</div>*/}
 				  <input onChange={this.handleChange} name='email' placeholder='E-Mail Address' type='text' value={ this.state.user.email } required/>
 				  <input onChange={this.handleChange} id='pw' name='password' placeholder='Password' type='password' value={ this.state.user.password } required/>
-				  <button type="button" className="btn btn-info" onClick={this.handleLogin}>Login</button>
+				  <button type="button" className="button is-success is-small" onClick={this.handleLogin}>Login</button>
 				</form>
 
 			  <div className="login-flex">

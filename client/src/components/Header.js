@@ -23,97 +23,84 @@ class Header extends Component {
 		console.log(this.props, user, user.isAuthInProgress, "header props");
 
 		return (
-			<header className="header">
-				<Router>
-					<nav className="navbar bg-light">
-							<Link to="/" className="navbar-brand">
-				    		<div className="logo-container">
-							  	<img className="logo" src="/dka.jpeg" alt="logo" />
-							  </div>
-						  </Link>
-
-						  <div>
-						  	{
-						  		/* toggle menu 
-									<button class="label" onClick={this.handleToggle}>
-										<img src="./dka.jpeg" />
-										<i class="fas fa-bars"></i>
-									</button>*/
-								}
-
-						    <ul className={`nav-ul about-sec ${ this.state.toggleClass ? "show" : "hide" }`}>
-						      <li className="nav-item">
-							      <Link to="/about" className="nav-link">About</Link>
-						      </li>
-						      <li className="nav-item">
-							      <Link to="/students" className="nav-link">Students</Link>
-							    </li>
-							    <li className="nav-item">
-							      <Link to="/instructors" className="nav-link">Instructors</Link>
-							    </li>
-							    <li className="nav-item">
-							      <Link to="/contact" className="nav-link">Contact</Link>
-							    </li>
-							    <li className="nav-item">
-							      <Link to="/learn" className="nav-link">Learn</Link>
-							    </li>
-							    <li className="nav-item">
-							      <Link to="/camps" className="nav-link">Camps</Link>
-							    </li>
-
-							    <li className="nav-item tournaments-list">
-							    	<span className="">Tournaments</span>
-							    	<ul className="tournaments">
-							    	 	<li>
-							      		<Link to="/state" className="nav-link">State</Link>
-							      	</li>
-							      	<li>
-							      		<Link to="/district" className="nav-link">District</Link>
-							      	</li>
-							      	<li>
-							      		<Link to="/national" className="nav-link">National</Link>
-							      	</li>
-							      </ul>
-							    </li>
-						    </ul>
+			<nav className="navbar" role="navigation" aria-label="main navigation">
+			  <div className="navbar-brand">
+			  	<Router>
+				    <Link to="/" className="navbar-brand">
+			    		<div className="logo-container">
+						  	<img className="logo" src="/dka.jpeg" alt="logo" width="80" height="80"/>
 						  </div>
+					  </Link>
+				  </Router>
 
-					    <div >
-						    {
-						    	// change isAuthInProgress to false after fetching api
-						    	!user.user && user.isAuthInProgress ?
-									    <ul className="nav-ul login-sec">
-									      <li>
-									      	<Link 
-									      		to="/users/login"
-									      		className="hdr-btn btn btn-outline-success my-2 my-sm-0"
-									      		type="submit">
-									      		Login
-									      	</Link>
-									      </li>
-									      <li>
-										      <Link
-										      	to="/users/register"
-										      	className="hdr-btn btn btn-outline-success my-2 my-sm-0"
-										      	type="submit">
-										      	Sign-Up
-										      </Link>
-										    </li>
-									    </ul>
-									  : 
-										<div>
-											<LoggedInUser/>
-										  <button 
-										  	className="hdr-btn btn" 
-										  	onClick={ this.handleLogout }>
-										  		Logout
-										  </button>
-									  </div>
-								}
-							</div>
-					</nav>
-				</Router>
-			</header>
+			    <a role="button" className="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+			      <span aria-hidden="true"></span>
+			      <span aria-hidden="true"></span>
+			      <span aria-hidden="true"></span>
+			    </a>
+			  </div>
+
+			  <div id="navbarBasicExample" className="navbar-menu">
+			    <div className="navbar-start">
+						<Router>
+							<Link to="/" className="navbar-item">Home</Link>
+
+				      <Link to="/students" className="navbar-item">Students</Link>
+				      <Link to="/instructors" className="navbar-item">Instructors</Link>
+				      <Link to="/contact" className="navbar-item">Contact</Link>
+				      <Link to="/learn" className="navbar-item">Learn</Link>
+				      <Link to="/camps" className="navbar-item">Camps</Link>
+				      <Link to="/documentation" className="navbar-item">Documentation</Link>
+				    </Router>
+
+			      <div className="navbar-item has-dropdown is-hoverable">
+			        <a className="navbar-link">
+			          More
+			        </a>
+
+			        <div className="navbar-dropdown">
+				        <Router>
+				      		<Link to="/state" className="navbar-item">State</Link>
+				      		<Link to="/district" className="navbar-item">District</Link>
+				      		<Link to="/national" className="navbar-item">National</Link>
+				          <a className="navbar-item">
+				            Report an issue
+				          </a>
+				        </Router>
+			        </div>
+			      </div>
+			    </div>
+
+			    <div className="navbar-end">
+			    	{
+							!user.user && user.isAuthInProgress ?
+					      <div className="navbar-item">
+					        <Router className="buttons">
+					          <Link
+											to="/users/register"
+							      	className="button is-primary">
+							      	Sign-Up
+							      </Link>
+					          <Link 
+						      		to="/users/login"
+						      		className="button is-primary">
+						      		Login
+						      	</Link>
+					        </Router>
+					      </div>
+			      	:
+					    <div className="buttons">
+				      	<button 
+				      		to="/users/login"
+				      		className="button is-primary"
+				      		onClick={ this.handleLogout }>
+				      		Logout
+				      	</button>
+				      </div>
+			    	}
+			    </div>
+			  </div>
+			</nav>
 		);
 	}
 }
