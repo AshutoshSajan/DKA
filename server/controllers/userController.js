@@ -73,6 +73,7 @@ module.exports = {
 	},
 
 	updateUser : (req,res) => {
+		console.log(req.params.id, req.user,"inside server updateUser...");
 		User.findOneAndUpdate({ _id: req.user.id }, req.body, { new: true }, (err,user) => {
 			if(err) res.status(500).send(err);
 			res.status(200).json({ success: true, user });
@@ -80,6 +81,7 @@ module.exports = {
 	},
 
 	deleteUser : (req,res) => {
+		console.log(req.params.id, req.user,"inside server updateUser...");
 		User.findOneAndDelete({ _id: req.user.id }, (err,user) => {
 			if(err) res.status(500).send(err);
 			res.status(200).json({ success: true, user });
