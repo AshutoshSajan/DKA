@@ -19,7 +19,7 @@ class Register extends Component {
 			<div className="container" style={{ border: "1px solid rgba(0,0,0,0.2)", padding: "2.5rem 4rem", borderRadius:'4px', width: "50%", margin:"0 auto"}}>
 				<div style={{display:'flex', alignItems:'center', flexWrap:'wrap', paddingBottom: '2rem'}}>
 					<img style={{ marginRight:'20px'}}src="/dka.jpeg" alt="logo" height="50" width="50"/>
-					<p>Wellcome to Dhauladhar Karate Acedemy plese fill all the feilds to join us</p>
+					<p>Wellcome to Dhauladhar Karate Acedemy plese fill up the form to join us</p>
 				</div>
 				<div style={{ display: "flex" , justifyContent:'space-between', flexWrap:'wrap'}}>
 					<div className="field">
