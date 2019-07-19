@@ -1,7 +1,7 @@
 .navbar {
 	padding-left: 20px;
 	padding-right: 20px;
-	/*box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.3);*/
+	box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.3);
 }
 
 .button {
@@ -9,5 +9,5 @@
 }
 
 .logo {
-	border-radius: 50%;
+	/*border-radius: 50%;*/
 }

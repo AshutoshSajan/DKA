@@ -12,7 +12,7 @@ import SignUp from './components/SignUp';
 import Profile from './components/Profile';
 import Students from './components/Students'
 // import Instructors from './components/Instructors'
-
+import LoggedInUser from './components/LoggedInUser';
 import Register from './components/Register';
 import EditProfile from './components/EditProfile';
 import PrivateRoute from './components/PrivateRoute';
@@ -47,6 +47,7 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
+        <LoggedInUser />
         <Switch>
           <Route exact path="/" component = {Home}/>
         	<Route path="/users/login" component = {Login}/>

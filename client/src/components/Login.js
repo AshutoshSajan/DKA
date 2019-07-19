@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import { connect } from 'react-redux';
-const axios = require('axios');
+import axios from 'axios';
 
 class Login extends Component {
 	
-	state ={
+	state = {
     user: {
     	email:"",
     	password:""
-    }
+    },
+    error: ""
   }
 
   handleChange = (e) => {
@@ -36,8 +37,9 @@ class Login extends Component {
   			this.props.history.push('/');
   		}
 	  })
-	  .catch(function (error) {
-	    console.log(error, "catch error");
+	  .catch(function (err) {
+	    console.log(err, "catch error");
+	    // this.setState({ error: "Wrong email please check again" });
 	  });
   }
 
@@ -46,6 +48,7 @@ class Login extends Component {
 			<div className='login'>
 				<form>
 				  <h2>Login</h2>
+				  <p className="register-error" >{this.state.error}</p>
 					{/*<div className="logo">
 						<img src="../../public/icon.png" alt="logo" />
 					</div>*/}

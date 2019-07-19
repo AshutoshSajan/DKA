@@ -1,25 +1,30 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-const axios = require('axios');
+import axios from 'axios';
 
-import Header from './Header';
+// import Header from './Header';
 // import setAuthToken from '../utils/setAuthToken';
 
 class Profile extends Component { 
-  constructor(props){
-    super(props);
-    console.log(this.props.user.user.user,'user');
-    this.state = {
+  // constructor(props){
+    // super(props);
+    // console.log(this.props.user.user.user,'user');
+    state = {
       showProfile: true,
-      firstName : this.props.user.user.user ? this.props.user.user.user.firstName : "",
-      lastName: this.props.user.user.user ? this.props.user.user.user.lastName : "",
-      username: this.props.user.user.user ? this.props.user.user.user.username : "",
-      email: this.props.user.user.user ? this.props.user.user.user.email : "",
-      dob: this.props.user.user.user ? this.props.user.user.user.dob : "",
-      phoneNumber: this.props.user.user.user ? this.props.user.user.user.phoneNumbe : "",
-      photo: this.props.user.user.user ? this.props.user.user.user.photo : "",
+      firstName : this.props.user ? this.props.user.firstName : "",
+      lastName: this.props.user ? this.props.user.lastName : "",
+      username: this.props.user ? this.props.user.username : "",
+      email: this.props.user ? this.props.user.email : "",
+      dob: this.props.user ? this.props.user.dob : "",
+      phoneNumber: this.props.user ? this.props.user.phoneNumbe : "",
+      photo: this.props.user ? this.props.user.photo : "",
       loading: false
     }
+  // }
+
+  componentDidMount() {
+    // TODO: handle show profile
+    console.log(this.props, "profile cdm..........");
   }
 
   handleChange = (e) => {
@@ -27,23 +32,23 @@ class Profile extends Component {
     this.setState({ [name]: value });
   }
 
-  handleUpdate = async(e) => {
-    e.preventDefault();
-    const { jwt } = localStorage;
-    // setAuthToken(jwt)
+  // handleUpdate = async(e) => {
+  //   e.preventDefault();
+  //   const { jwt } = localStorage;
+  //   // setAuthToken(jwt)
 
-    axios.put(`/users/update/${this.props.user.user.user._id}`, this.state)
-	  .then((res) => {
-	    console.log(res, "data");
-	    if(res.data.success){
-  			this.setState({ loading: false, message: "Profile updated!"})
-        console.log("Profile updated!");
-  		}
-	  })
-	  .catch(function (error) {
-	    console.log(error, "catch error");
-	  });
-  }
+  //   axios.put(`/users/update/${this.props.user.user.user._id}`, this.state)
+	 //  .then((res) => {
+	 //    console.log(res, "data");
+	 //    if(res.data.success){
+  // 			this.setState({ loading: false, message: "Profile updated!"})
+  //       console.log("Profile updated!");
+  // 		}
+	 //  })
+	 //  .catch(function (error) {
+	 //    console.log(error, "catch error");
+	 //  });
+  // }
 
   handleProfile = (e) => {
     if(e.target.innerText === "Edit Profile"){ 
@@ -120,9 +125,10 @@ class Profile extends Component {
 	}
 }
 
-const mapStateToProps = (state) => {
+function mapStateToProps(state) {
+  console.log(this.state, "profile map state");
 	return {
-		user: state.user,
+		user: state.currentUser,
 	}
 }
 

@@ -39,28 +39,25 @@ module.exports = {
 				} else if(isValidPassword){
 					res.status(200).json({ success: true, user, token })
 				}
+			} else {
+				res.status(400).json({ success: false, error: "user does not found"})
 			}
 		})
 	},
 
 	register: (req, res) => {
 		console.log(req.body, "inside register user");
-		console.log("register check 1");
 
 		User.findOne({ email: req.body.email }, (err, user) => {
-			console.log("register check 2");
-
 			if(err) return res.status(500).json({ success: false, error: err, message: "server side error" });
 			if(user){
-				console.log("register check 3");
+				console.log("user already exist");
 				res.status(302).json({ success: false, message: "User already exist" })
-			} if (!user) {
-				console.log("register check 4");
-
+			} if(!user) {
 				User.create(req.body, (err,user) => {
-					if(err) return res.status(500).json({ success: false, error: err })
+					if(err) return res.status(500).json({ success: false, error: err, message: "Server side error" })
 					if(user){
-						res.status(200).json({ success: true, massage: "user registerd succesfully" })
+						res.status(201).json({ success: true, massage: "user registerd succesfully" })
 					}
 				})
 			}
@@ -92,7 +89,7 @@ module.exports = {
 	getAllStudents: (req,res) => {
 		console.log("inside all students");
 
-		User.find({isStudent: true}, (err, users) => {
+		User.find({}, (err, users) => {
 			if(err) {
 				return res.status(500).json({ success: false, error: err, massage: "Server error" });
 			}

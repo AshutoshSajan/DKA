@@ -27,6 +27,10 @@ var userSchema = new Schema({
 		type: String,
 		default: ""
 	},
+	belt:{
+		type: String,
+		default: ""
+	},
 	photo: {
 		type: String,
 		default: ""

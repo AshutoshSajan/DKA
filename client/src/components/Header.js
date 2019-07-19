@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Link, withRouter } from "react-router-dom";
 import { connect } from 'react-redux';
-import LoggedInUser from "./LoggedInUser";
 
 class Header extends Component {
 
@@ -11,11 +10,16 @@ class Header extends Component {
 
 	handleLogout = (e) => {
 		localStorage.removeItem("jwt");
-		this.props.history.push("/login");
+		this.props.history.push("/");
+		window.location.reload();
 	};
 
 	handleToggle = () => {
 		this.setState({ toggleClass: !this.state.toggleClass })
+	}
+
+	showHamburger = (e) => {
+		console.log(e.target.dataset);
 	}
 
 	render() {
@@ -33,10 +37,11 @@ class Header extends Component {
 					  </Link>
 				  </Router>
 
-			    <a role="button" className="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-			      <span aria-hidden="true"></span>
-			      <span aria-hidden="true"></span>
-			      <span aria-hidden="true"></span>
+			    <a role="button" className="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample"
+			    onClick={this.showHamburger}>
+			      <span aria-hidden="true">aria-expanded</span>
+			      <span aria-hidden="true">aria-expanded</span>
+			      <span aria-hidden="true">aria-expanded</span>
 			    </a>
 			  </div>
 
@@ -44,12 +49,20 @@ class Header extends Component {
 			    <div className="navbar-start">
 							<Link to="/" className="navbar-item">Home</Link>
 
-				      <Link to="/students" className="navbar-item">Students</Link>
-				      <Link to="/instructors" className="navbar-item">Instructors</Link>
+				      <Link to="/users/students" className="navbar-item">Students</Link>
+				      <Link to="/users/instructors" className="navbar-item">Instructors</Link>
 				      <Link to="/contact" className="navbar-item">Contact</Link>
 				      <Link to="/users/apply" className="navbar-item">Learn</Link>
-				      <Link to="/camps" className="navbar-item">Camps</Link>
-				      <Link to="/documentation" className="navbar-item">Documentation</Link>
+				      <Link to="/organisations/camps" className="navbar-item">Camps</Link>
+				      <Link to="/organisation/documentation" className="navbar-item">Documentation</Link>
+				      
+				      {
+				      	// temporary link to check
+				      	<>
+				      	<Link to="/users/profile" className="navbar-item">Profile</Link>
+				      	<Link to="/users/edit-profile" className="navbar-item">Edit Profile</Link>
+				      	</>
+				    	}
 
 			      <div className="navbar-item has-dropdown is-hoverable">
 			        <a className="navbar-link">
@@ -101,7 +114,7 @@ class Header extends Component {
 	}
 }
 
-const mapStateToProps = (state) => {
+function mapStateToProps (state) {
 	console.log(state, "hdr map state");
   return { user: state.currentUser };
 }

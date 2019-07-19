@@ -43,12 +43,13 @@ class SignUp extends Component {
 		  			this.setState({ user: {} });
 		  			this.props.history.push('/users/login');
 		  		} else {
-		  			console.log(res.error, "register err");
+		  			console.log(res, "register err");
 		  			this.setState( { error: "Please fill all the information" });
 		  		}
 			  })
 			  .catch(error => {
 			    console.log(error, "exios fetch error!");
+			   	this.setState( { error: "User already exist" });
 			  });
 			}
 		}else {
