@@ -65,7 +65,7 @@ module.exports = {
 	},
 
 	verifyToken: (req,res) => {
-		console.log(req.user, "insede /me");
+		console.log(req.user, "insede me");
 		User.findOne({ _id: req.user.id }, (err,user) => {
 			if(err) res.status(500).send(err);
 			res.status(200).json({ success: true, user });
@@ -104,7 +104,7 @@ module.exports = {
 	getInstructors: (req,res) => {
 		console.log("inside all students");
 
-		User.find({ isSenior: true}, (err, users) => {
+		User.find({}, (err, users) => {
 			if(err) {
 				return res.status(500).json({ success: false, error: err, massage: "Server error" });
 			}

@@ -1,24 +1,24 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-class Students extends Component {
+class Instructors extends Component {
 
   state = {
-    students: null
+    instructors: null
   }
 	
 	componentDidMount() {
     var token = localStorage.getItem("jwt") || "";
     if(token){
-      axios.get('http://localhost:3000/api/v1/users/students',
+      axios.get('http://localhost:3000/api/v1/users/instructors',
         {
           headers: {"Authorization" : token }
         })
       .then((res) => {
         console.log(res, "login data");
         if(res.data.success){
-          console.log(res.data, "all students");
-          this.setState({ students: res.data.users });
+          console.log(res.data, "all instructors");
+          this.setState({ instructors: res.data.users });
         }
       })
       .catch(function (error) {
@@ -30,15 +30,15 @@ class Students extends Component {
 	}
 
 	render() {
-    const { students } = this.state;
+    const { instructors } = this.state;
 		return (
       <div className="container is-fluid" style={{display: 'flex', flexWrap:'wrap', justifyContent:'space-evenly'}}>
         {
-          students ? students.map(student => (
-            <div class="card" style={{ margin: "1.2rem"}} key={student._id}>
+          instructors ? instructors.map(instructor => (
+            <div class="card" style={{ margin: "1.2rem"}} key={instructor._id}>
               <div class="card-image">
                 <figure class="image is-4by3">
-                  <img src="https://bulma.io/images/placeholders/1280x960.png" alt={student.username +"'s"+" "+ "image" || "profile image" }/>
+                  <img src="https://bulma.io/images/placeholders/1280x960.png" alt={instructor.username +"'s"+" "+ "image" || "profile image" }/>
                 </figure>
               </div>
               <div class="card-content">              
@@ -52,11 +52,12 @@ class Students extends Component {
                 </div>
               </div>
             </div>
-          )):null
+          )):
+          <p>No instructors found</p>
         }
       </div>
 		);
 	}
 }
 
-export default Students;
+export default Instructors;

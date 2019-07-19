@@ -4,7 +4,19 @@ var bcrypt = require('bcrypt');
 const salt = bcrypt.genSaltSync(10);
 
 var userSchema = new Schema({
-	username: {
+	firstName:{
+		type: String,
+		default: ""
+	},
+	lastName:{
+		type: String,
+		default: ""
+	},
+	mobile:{
+		type: String,
+		default: ""
+	},
+	userName: {
 		type: String,
 		default: ""
 	},
@@ -20,7 +32,7 @@ var userSchema = new Schema({
 		reqired: true
 	},
 	dob: {
-		type: String,
+		type: Date,
 		default: ""
 	},
 	rank: {

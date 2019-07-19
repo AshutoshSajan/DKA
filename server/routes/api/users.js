@@ -7,10 +7,10 @@ router.get('/', jwtAuth.verifyToken, userController.getAllUsers);
 router.post('/login', userController.login);
 router.post('/register', userController.register);
 router.get('/students/', jwtAuth.verifyToken, userController.getAllStudents);
-router.get('/me', jwtAuth.verifyToken, userController.verifyToken);
 router.put('/update/:id', jwtAuth.verifyToken, userController.updateUser);
 router.delete('/delete/:id', jwtAuth.verifyToken, userController.deleteUser);
-router.get('/instructors/', jwtAuth.verifyToken, userController.getInstructors);
+router.get('/instructors', jwtAuth.verifyToken, userController.getInstructors);
 router.get('/profile/:id', jwtAuth.verifyToken, userController.getUser);
+router.get('/me', jwtAuth.verifyToken, userController.verifyToken);
 
 module.exports = router;

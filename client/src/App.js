@@ -8,10 +8,10 @@ import Home from './components/Home';
 import Login from './components/Login';
 import Header from './components/Header';
 import SignUp from './components/SignUp';
-// import Footer from './components/Footer';
+import Footer from './components/Footer';
 import Profile from './components/Profile';
 import Students from './components/Students'
-// import Instructors from './components/Instructors'
+import Instructors from './components/Instructors'
 import LoggedInUser from './components/LoggedInUser';
 import Register from './components/Register';
 import EditProfile from './components/EditProfile';
@@ -51,11 +51,12 @@ class App extends Component {
         <Switch>
           <Route exact path="/" component = {Home}/>
         	<Route path="/users/login" component = {Login}/>
+        	<Route path="/users/apply" component = {Register}/>
         	<Route path="/users/register" component = {SignUp}/>
         	<Route path="/users/profile" component = {Profile}/>
-        	<Route path="/users/apply" component = {Register}/>
           <Route path="/users/students" component = {Students}/>
-          <Route path="/users/:id" component = {EditProfile}/>
+          <Route path="/users/instructors" component = {Instructors}/>
+          <Route path="/users/edit-profile/:id" component = {EditProfile}/>
         </Switch>
       </div>
     );

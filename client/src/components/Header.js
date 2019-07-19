@@ -60,7 +60,7 @@ class Header extends Component {
 				      	// temporary link to check
 				      	<>
 				      	<Link to="/users/profile" className="navbar-item">Profile</Link>
-				      	<Link to="/users/edit-profile" className="navbar-item">Edit Profile</Link>
+				      	<Link to="/users/edit-profile/:id" className="navbar-item">Edit Profile</Link>
 				      	</>
 				    	}
 
