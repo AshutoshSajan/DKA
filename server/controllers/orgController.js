@@ -2,6 +2,7 @@ var Org = require ('../models/Org');
 
 module.exports = {
 	registerUser: (req,res) => {
+		console.log('Comming here', req.body)
 		Org.create(req.body, (err, registration) => {
 			if (err) {
 				return res.status(500).send("server error")

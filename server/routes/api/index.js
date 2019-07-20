@@ -3,6 +3,11 @@ var router = express.Router();
 var userRouter = require('./users');
 var orgRouter = require('./organisation');
 
+// var middleWare = (req,res,next) => {
+// 	console.log(req.body, "mid ware");
+// 	next();
+// }
+
 /* GET home page. */
 router.use('/users', userRouter);
 router.use('/organisation', orgRouter);

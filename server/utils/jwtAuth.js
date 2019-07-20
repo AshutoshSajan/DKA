@@ -3,7 +3,7 @@ var router = express.Router();
 var jwt = require('jsonwebtoken');
 var User = require ('../models/User');
 
-exports.verifyToken = function(req, res, next){
+exports.verifyToken = function(req, res, next) {
 	var token = req.headers.Authorization || req.headers.authorization || "";
 	console.log(token, "check1");
 	if(!token) {

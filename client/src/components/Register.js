@@ -24,35 +24,51 @@ class Register extends Component {
 	handleSubmit = (e) => {
 		const { user } = this.state;
 		var isValidMail = validateEmail(user.email);
+		var token = localStorage.getItem("jwt");
 
 		console.log(user, isValidMail, "register form");
-		if(user.firstName && user.lastName && user.mothersName && user.address && user.currentAddress && user.info && user.phone && user.email && user.dob && user.profession && user.pin){
+		// if(user.firstName && user.lastName && user.mothersName && user.address && user.currentAddress && user.info && user.phone && user.email && user.dob && user.profession && user.pin){
 
-				axios.post('http://localhost:3000/api/v1/organisation/register', this.state.user)
-				  .then((res) => {
-				    console.log(res, "data");
-				    if(res.data.success){
-			  			this.setState({ user: {} });
-			  			this.props.history.push('/users/login');
-			  		} else {
-			  			console.log(res, "register err");
-			  			this.setState( { error: "Please fill all the information" });
-			  		}
-				  })
-				  .catch(error => {
-				    console.log(error, "exios fetch error!");
-				   	this.setState( { error: "User already exist" });
-				  });
+		// 		console.log("inside axios....");
+		// 		axios.post('http://localhost:3000/api/v1/organisation/register',
+		// 			{
+  //         	headers: { "Authorization" : token }
+  //       	}, user )
+		// 		  .then((res) => {
+		// 		    console.log(res, "data");
+		// 		    if(res.data.success){
+		// 	  			this.setState({ user: {} });
+		// 	  			this.props.history.push('/users/login');
+		// 	  		} else {
+		// 	  			console.log(res, "register err");
+		// 	  			this.setState( { error: "Please fill all the information" });
+		// 	  		}
+		// 		  })
+		// 		  .catch(error => {
+		// 		    console.log(error, "exios fetch error!");
+		// 		   	// this.setState( { error: "User already exist" });
+		// 		  });
+		// } else {
+		// 	this.setState({ error: "Please fill up all the feilds" });
+		// }
 
-		} else {
-			this.setState({ error: "Please fill up all the feilds" });
-		}
+		fetch(`http://localhost:3000/api/v1/users/organisation/register`,{
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization' : token
+        },
+        body: JSON.stringify(user)
+	    })
+	    .then(res => res.json())
+	    .then(data => console.log(data, "updated data"));
 	}
 
 	render() {
 		return (
 			<div className="container" style={{ border: "1px solid rgba(0,0,0,0.2)", padding: "2.5rem 4rem", borderRadius:'4px', width: "50%", margin:"0 auto"}}>
-				<p className="register-error">{this.state.error ? this.state.error : ""}</p>
+					
+				{/*<p className="register-error">{ this.state.error || "" }</p> */}
 				<div style={{display:'flex', alignItems:'center', flexWrap:'wrap', paddingBottom: '2rem'}}>
 					<img style={{ marginRight:'20px'}}src="/dka.jpeg" alt="logo" height="50" width="50"/>
 					<p>Wellcome to Dhauladhar Karate Acedemy plese fill up the form to join us</p>
@@ -207,7 +223,7 @@ class Register extends Component {
 					  <div className="control">
 					    <div className="select" style={{marginRight:'20px'}}>
 					      <select name="weight" onChange={this.handleChange}>
-					        <option>30-35</option>
+					        <option>Weight-range</option>
 					        <option>35-40</option>
 					        <option>40-45</option>
 					        <option>45-50</option>
@@ -228,6 +244,7 @@ class Register extends Component {
 					  <div className="control">
 					    <div className="select">
 					      <select name="profession" onChange={this.handleChange}>
+					        <option>I am a ?</option>
 					        <option>Student</option>
 					        <option>Buisnessman</option>
 					        <option>Govt. employe</option>
