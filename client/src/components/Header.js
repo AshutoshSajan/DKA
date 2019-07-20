@@ -52,18 +52,10 @@ class Header extends Component {
 				      <Link to="/users/students" className="navbar-item">Students</Link>
 				      <Link to="/users/instructors" className="navbar-item">Instructors</Link>
 				      <Link to="/contact" className="navbar-item">Contact</Link>
-				      <Link to="/users/apply" className="navbar-item">Learn</Link>
+				      <Link to="/users/apply" className="navbar-item">Join acedemy</Link>
 				      <Link to="/organisations/camps" className="navbar-item">Camps</Link>
 				      <Link to="/organisation/documentation" className="navbar-item">Documentation</Link>
 				      
-				      {
-				      	// temporary link to check
-				      	<>
-				      	<Link to="/users/profile" className="navbar-item">Profile</Link>
-				      	<Link to="/users/edit-profile/:id" className="navbar-item">Edit Profile</Link>
-				      	</>
-				    	}
-
 			      <div className="navbar-item has-dropdown is-hoverable">
 			        <a className="navbar-link">
 			          More

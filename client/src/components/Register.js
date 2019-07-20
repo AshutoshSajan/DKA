@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+
+import { validateEmail } from "../utils/validateEmail";
 
 class Register extends Component {
 
@@ -9,14 +12,47 @@ class Register extends Component {
 	}
 
 	handleChange = (e) => {
-		console.log(e.target.value, "handleChange fired");
 		const { name , value } = e.target;
-		this.setState({ [name]: value });
+		this.setState( state => ({
+			user : {
+				...state.user,
+				[name]: value 
+			}
+		}));
+	}
+
+	handleSubmit = (e) => {
+		const { user } = this.state;
+		var isValidMail = validateEmail(user.email);
+
+		console.log(user, isValidMail, "register form");
+		if(user.firstName && user.lastName && user.mothersName && user.address && user.currentAddress && user.info && user.phone && user.email && user.dob && user.profession && user.pin){
+
+				axios.post('http://localhost:3000/api/v1/organisation/register', this.state.user)
+				  .then((res) => {
+				    console.log(res, "data");
+				    if(res.data.success){
+			  			this.setState({ user: {} });
+			  			this.props.history.push('/users/login');
+			  		} else {
+			  			console.log(res, "register err");
+			  			this.setState( { error: "Please fill all the information" });
+			  		}
+				  })
+				  .catch(error => {
+				    console.log(error, "exios fetch error!");
+				   	this.setState( { error: "User already exist" });
+				  });
+
+		} else {
+			this.setState({ error: "Please fill up all the feilds" });
+		}
 	}
 
 	render() {
 		return (
 			<div className="container" style={{ border: "1px solid rgba(0,0,0,0.2)", padding: "2.5rem 4rem", borderRadius:'4px', width: "50%", margin:"0 auto"}}>
+				<p className="register-error">{this.state.error ? this.state.error : ""}</p>
 				<div style={{display:'flex', alignItems:'center', flexWrap:'wrap', paddingBottom: '2rem'}}>
 					<img style={{ marginRight:'20px'}}src="/dka.jpeg" alt="logo" height="50" width="50"/>
 					<p>Wellcome to Dhauladhar Karate Acedemy plese fill up the form to join us</p>
@@ -191,7 +227,7 @@ class Register extends Component {
 					  <p className="p">What you do ?</p>
 					  <div className="control">
 					    <div className="select">
-					      <select name="job" onChange={this.handleChange}>
+					      <select name="profession" onChange={this.handleChange}>
 					        <option>Student</option>
 					        <option>Buisnessman</option>
 					        <option>Govt. employe</option>
@@ -205,14 +241,20 @@ class Register extends Component {
 				<div className="field">
 				  <p className="label">Why Karate</p>
 				  <div className="control">
-				    <textarea className="textarea" placeholder="Please tell us why you want to learn Karate ?"></textarea>
+				    <textarea 
+				    	className="textarea"
+				    	name="info"
+				    	placeholder="Please tell us why you want to learn Karate ?"
+				    	onChange={this.handleChange}
+				    	value={this.state.info}>
+				    	</textarea>
 				  </div>
 				</div>
 
 				<div className="field">
 				  <div className="control">
 				    <p className="checkbox">
-				      <input type="checkbox"/>
+				      <input type="checkbox" name="terms"/>
 				      I agree to the <a href="#">terms and conditions</a>
 				    </p>
 				  </div>
@@ -233,7 +275,7 @@ class Register extends Component {
 
 				<div className="field is-grouped">
 				  <div className="control">
-				    <button className="button is-link">Submit</button>
+				    <button className="button is-link" onClick={this.handleSubmit}>Submit</button>
 				  </div>
 				  <div className="control">
 				    <button className="button is-text">Cancel</button>

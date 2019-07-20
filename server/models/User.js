@@ -67,7 +67,7 @@ var userSchema = new Schema({
 		type: Boolean,
 		default: false,
 	},
-}, { timeStamp: true });
+}, { timestamps: true });
 
 userSchema.pre('save', function (next) {
 	if(this.password && this.isModified('password')){

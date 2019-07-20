@@ -1,12 +1,12 @@
 var mongoose = require ('mongoose');
-var schema = mongoose.Schema;
+var Schema = mongoose.Schema;
 
 var organisationSchema = new Schema({
 	details: {
-		type: Object;
+		type: Object,
 		default: {}
 	}
-}, {timestamp: true })
+}, { timestamps: true })
 
 var Org = mongoose.model("Org", organisationSchema);
 
