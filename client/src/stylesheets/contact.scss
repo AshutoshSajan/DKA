@@ -1,0 +1,101 @@
+.contact-sec-hdr {
+	ul li a {
+		color: tomato;
+	}
+	ul li a:hover {
+		color: white;
+	}
+}
+
+.form-sec {
+	background: #111;
+	display: grid;
+	width: 100%;
+	height: 100vh;
+	align-items: center;
+	justify-content: center;
+}
+
+form {
+	display: grid;
+	background-color: rgba(27, 31, 34, 0.85);
+	width: 50vw;
+	padding: 4rem;
+	border-radius: 4px;
+	justify-content: center;
+	input, textarea {
+		font-size: 2rem;
+		padding: 0.7rem 1rem;
+		color: #f3f3f3;
+		border: 1px solid #fff;
+		background-color: transparent;
+		border-radius: 3px;
+	}
+	label {
+		letter-spacing: 2px;
+		text-transform: uppercase;
+		font-size: 1.5rem;
+	}
+	legend {
+		letter-spacing: 2px;
+		text-transform: uppercase;
+		color: #fff;
+		font-size: 3rem;
+		border-bottom: 1px solid #fff;
+		margin-bottom: 2rem;
+		padding-bottom: 1rem;
+	}
+}
+
+.top-input-row {
+	display: flex;
+	justify-content: space-between;
+}
+.msg-container {
+	width: 100%;
+	margin: 3rem 0;
+}
+
+.btn {
+	font-size: 14px;
+	background-color: #fff;
+	color: #333;
+	text-transform: uppercase;
+	padding: 0.7rem 1.5rem;
+	border-radius: 3px;
+	font-weight: 400;
+	cursor: pointer;
+}
+
+.social-links ul {
+	padding: 3rem 0;
+	display: flex;
+	justify-content: baseline;
+	.fab {
+		margin-right: 3rem;
+		font-size: 3rem;
+		color: #dadada;
+	}
+	.fab:hover {
+		color: #fff;
+		text-shadow: 0 0 2px #fff;
+	}
+}
+
+.cancel-btn {
+	position: absolute;
+	top: 0;
+	right: 0;
+	display: block;
+	background-color: #fff;
+	width: 30px;
+	height: 3px;
+	z-index: 2;
+}
+.cancel-btn:before {
+	margin-right: 20px;
+	background-color: #fff;
+	top: 20px;
+	width: 10px;
+	height: 5px;
+}
