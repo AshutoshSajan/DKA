@@ -14,7 +14,6 @@ import Contact from './components/Contact'
 import Students from './components/Students'
 import Register from './components/Register';
 import Instructors from './components/Instructors'
-import LoggedInUser from './components/LoggedInUser';
 import EditProfile from './components/EditProfile';
 import PrivateRoute from './components/PrivateRoute';
 
@@ -48,7 +47,6 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <LoggedInUser />
         <Switch>
           <Route exact path="/" component = {Home}/>
         	<Route path="/users/login" component = {Login}/>

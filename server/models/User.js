@@ -12,7 +12,7 @@ var userSchema = new Schema({
 		type: String,
 		default: ""
 	},
-	mobile:{
+	phone:{
 		type: String,
 		default: ""
 	},

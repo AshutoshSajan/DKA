@@ -52,16 +52,19 @@ class Register extends Component {
 		// 	this.setState({ error: "Please fill up all the feilds" });
 		// }
 
-		fetch(`http://localhost:3000/api/v1/users/organisation/register`,{
+		if(user.firstName && user.lastName && user.mothersName && user.address && user.currentAddress && user.info && user.phone && user.email && user.dob && user.profession && user.pin){
+
+			fetch('http://localhost:3000/api/v1/register', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
             'Authorization' : token
         },
-        body: JSON.stringify(user)
+        body: JSON.stringify(user),
 	    })
 	    .then(res => res.json())
-	    .then(data => console.log(data, "updated data"));
+	    .then(data => console.log(data, "registerd data"));
+		}
 	}
 
 	render() {
@@ -78,7 +81,15 @@ class Register extends Component {
 					  <div className="field">
 						  <p className="label">First Name</p>
 						  <div className="control has-icons-left has-icons-right">
-						    <input className="input is-success" type="text" placeholder="First Name" name="firstName" value={ this.state.firstName } onChange={this.handleChange} required />
+						    <input
+						    	required
+						    	type="text"
+						    	name="firstName"
+						    	placeholder="First Name"
+						    	className="input is-success"
+						    	onChange={this.handleChange}
+						    	value={ this.state.firstName }
+						    	/>
 						    <span className="icon is-small is-left">
 						      <i className="fas fa-user"></i>
 						    </span>
@@ -86,7 +97,9 @@ class Register extends Component {
 						      <i className="fas fa-check"></i>
 						    </span>
 						  </div>
-						  <p className="help is-success">{this.state.error.username}</p>
+						  <p className="help is-success">
+						  	{this.state.error.username}
+						  </p>
 						</div>
 					</div>
 
@@ -94,7 +107,14 @@ class Register extends Component {
 					  <div className="field">
 						  <p className="label">Last Name</p>
 						  <div className="control has-icons-left has-icons-right">
-						    <input className="input is-success" type="text" placeholder="Last Name" name="lastName" value={ this.state.lastName } onChange={this.handleChange} />
+						    <input
+						    	type="text"
+						    	name="lastName"
+						    	placeholder="Last Name"
+						    	className="input is-success"
+						    	value={ this.state.lastName }
+						    	onChange={this.handleChange}
+						    	/>
 						    <span className="icon is-small is-left">
 						      <i className="fas fa-user"></i>
 						    </span>
@@ -110,7 +130,14 @@ class Register extends Component {
 					  <div className="field">
 						  <p className="label">Mothers Name</p>
 						  <div className="control has-icons-left has-icons-right">
-						    <input className="input is-success" type="text" placeholder="Mothers Name" name="mothersName" value={ this.state.mothersName } onChange={this.handleChange}/>
+						    <input
+						    	type="text"
+						    	name="mothersName"
+						    	placeholder="Mothers Name"
+						    	onChange={this.handleChange}
+						    	className="input is-success"
+						    	value={ this.state.mothersName }
+						    	/>
 						    <span className="icon is-small is-left">
 						      <i className="fas fa-user"></i>
 						    </span>
@@ -118,7 +145,9 @@ class Register extends Component {
 						      <i className="fas fa-check"></i>
 						    </span>
 						  </div>
-						  <p className="help is-success">{this.state.error.mothersName}</p>
+						  <p className="help is-success">
+						  	{this.state.error.mothersName}
+						  </p>
 						</div>
 					</div>
 
@@ -126,7 +155,15 @@ class Register extends Component {
 					  <div className="field">
 						  <p className="label">Permanent Address</p>
 						  <div className="control has-icons-left has-icons-right">
-						    <input className="input is-success" type="text" placeholder="VPO-Dist-state" name="address" value={ this.state.address } onChange={this.handleChange} required />
+						    <input
+						    	required
+						    	type="text"
+						    	name="address"
+						    	className="input is-success"
+						    	placeholder="VPO-Dist-state"
+						    	value={ this.state.address }
+						    	onChange={this.handleChange}
+						    	/>
 						    <span className="icon is-small is-left">
 						      <i className="fas fa-user"></i>
 						    </span>
@@ -134,7 +171,9 @@ class Register extends Component {
 						      <i className="fas fa-check"></i>
 						    </span>
 						  </div>
-						  <p className="help is-success">{this.state.error.address}</p>
+						  <p className="help is-success">
+						  	{this.state.error.address}
+						  </p>
 						</div>
 					</div>
 
@@ -142,7 +181,15 @@ class Register extends Component {
 					  <div className="field">
 						  <p className="label">Current Address</p>
 						  <div className="control has-icons-left has-icons-right">
-						    <input className="input is-success" type="text" placeholder="VPO-Dist-state" name="currentAddress" value={ this.state.currentAddress } onChange={this.handleChange} required />
+						    <input
+						    	required
+						    	type="text"
+						    	name="currentAddress"
+						    	className="input is-success"
+						    	placeholder="VPO-Dist-state"
+						    	onChange={this.handleChange}
+						    	value={ this.state.currentAddress }
+						    	/>
 						    <span className="icon is-small is-left">
 						      <i className="fas fa-user"></i>
 						    </span>
@@ -150,7 +197,9 @@ class Register extends Component {
 						      <i className="fas fa-check"></i>
 						    </span>
 						  </div>
-						  <p className="help is-success">{this.state.error.currentAddress}</p>
+						  <p className="help is-success">
+						  	{this.state.error.currentAddress}
+						  </p>
 						</div>
 					</div>
 					
@@ -158,7 +207,15 @@ class Register extends Component {
 					  <div className="field">
 						  <p className="label">Phone</p>
 						  <div className="control has-icons-left has-icons-right">
-						    <input className="input is-success" type="text" placeholder="Mobile number" name="phone" value={ this.state.phone } onChange={this.handleChange} required />
+						    <input
+						    	required
+						    	type="text"
+						    	name="phone"
+						    	value={ this.state.phone }
+						    	placeholder="Mobile number"
+						    	className="input is-success"
+						    	onChange={this.handleChange}
+						    	/>
 						    <span className="icon is-small is-left">
 						      <i className="fas fa-user"></i>
 						    </span>
@@ -166,7 +223,9 @@ class Register extends Component {
 						      <i className="fas fa-check"></i>
 						    </span>
 						  </div>
-						  <p className="help is-success">{this.state.error.phone}</p>
+						  <p className="help is-success">
+						  	{this.state.error.phone}
+						  </p>
 						</div>
 					</div>
 
@@ -174,7 +233,15 @@ class Register extends Component {
 					  <div className="field">
 						  <p className="label">DOB</p>
 						  <div className="control has-icons-left has-icons-right">
-						    <input className="input is-success" type="date" placeholder="DOB" name="dob" value={ this.state.dob } onChange={this.handleChange} required />
+						    <input
+						    	required
+						    	name="dob"
+						    	type="date"
+						    	placeholder="DOB"
+						    	value={ this.state.dob }
+						    	className="input is-success"
+						    	onChange={this.handleChange}
+						    	/>
 						    <span className="icon is-small is-left">
 						      <i className="fas fa-user"></i>
 						    </span>
@@ -182,7 +249,9 @@ class Register extends Component {
 						      <i className="fas fa-check"></i>
 						    </span>
 						  </div>
-						  <p className="help is-success">{this.state.error.dob}</p>
+						  <p className="help is-success">
+						  	{this.state.error.dob}
+						  </p>
 						</div>
 					</div>
 
@@ -190,7 +259,15 @@ class Register extends Component {
 					  <div className="field">
 						  <p className="label">PIN</p>
 						  <div className="control has-icons-left has-icons-right">
-						    <input className="input is-success" type="number" placeholder="PIN/zip code" name="pin" value={ this.state.pin } onChange={this.handleChange} required />
+						    <input
+						    	required
+						    	name="pin"
+						    	type="number"
+						    	value={ this.state.pin }
+						    	placeholder="PIN/zip code"
+						    	className="input is-success"
+						    	onChange={this.handleChange}
+						    	/>
 						    <span className="icon is-small is-left">
 						      <i className="fas fa-user"></i>
 						    </span>
@@ -198,7 +275,9 @@ class Register extends Component {
 						      <i className="fas fa-check"></i>
 						    </span>
 						  </div>
-						  <p className="help is-success">{this.state.error.pin}</p>
+						  <p className="help is-success">
+						  	{this.state.error.pin}
+						  </p>
 						</div>
 					</div>
 				</div>
@@ -206,7 +285,15 @@ class Register extends Component {
 				<div className="field">
 				  <p className="label">Email</p>
 				  <div className="control has-icons-left has-icons-right">
-				    <input className="input is-danger" type="email" placeholder="example@gmail.com" name="email" value={ this.state.email } onChange={this.handleChange} required/>
+				    <input
+				    	required
+				    	type="email"
+				    	name="email"
+				    	value={ this.state.email }
+				    	className="input is-danger"
+				    	onChange={this.handleChange}
+				    	placeholder="example@gmail.com"
+				    	/>
 				    <span className="icon is-small is-left">
 				      <i className="fas fa-envelope"></i>
 				    </span>
@@ -214,7 +301,9 @@ class Register extends Component {
 				      <i className="fas fa-exclamation-triangle"></i>
 				    </span>
 				  </div>
-				  <p className="help is-danger">{this.state.error.email}</p>
+				  <p className="help is-danger">
+				  	{this.state.error.email}
+				  </p>
 				</div>
 
 				<div style={{display:"flex" }}>
@@ -243,7 +332,10 @@ class Register extends Component {
 					  <p className="p">What you do ?</p>
 					  <div className="control">
 					    <div className="select">
-					      <select name="profession" onChange={this.handleChange}>
+					      <select
+					      	name="profession"
+					      	onChange={this.handleChange}
+					      	>
 					        <option>I am a ?</option>
 					        <option>Student</option>
 					        <option>Buisnessman</option>
@@ -259,11 +351,11 @@ class Register extends Component {
 				  <p className="label">Why Karate</p>
 				  <div className="control">
 				    <textarea 
-				    	className="textarea"
 				    	name="info"
-				    	placeholder="Please tell us why you want to learn Karate ?"
-				    	onChange={this.handleChange}
+				    	className="textarea"
 				    	value={this.state.info}>
+				    	onChange={this.handleChange}
+				    	placeholder="Please tell us why you want to learn Karate ?"
 				    	</textarea>
 				  </div>
 				</div>
@@ -280,11 +372,21 @@ class Register extends Component {
 				<div className="field">
 				  <div className="control">
 				    <p className="radio">
-				      <input type="radio" name="terms" value={this.state.terms} onChange={this.handleChange} />
+				      <input 
+				      	type="radio"
+				      	name="terms"
+				      	value={this.state.terms}
+				      	onChange={this.handleChange} 
+				      	/>
 				      Yes
 				    </p>
 				    <p className="radio">
-				      <input type="radio" name="terms" value={this.state.terms} onChange={this.handleChange} />
+				      <input
+				      	type="radio"
+				      	name="terms"
+				      	value={this.state.terms}
+				      	onChange={this.handleChange}
+				      	/>
 				      No
 				    </p>
 				  </div>
@@ -292,7 +394,12 @@ class Register extends Component {
 
 				<div className="field is-grouped">
 				  <div className="control">
-				    <button className="button is-link" onClick={this.handleSubmit}>Submit</button>
+				    <button
+				    	className="button is-link"
+				    	onClick={this.handleSubmit}
+				    	>
+				    	Submit
+				    </button>
 				  </div>
 				  <div className="control">
 				    <button className="button is-text">Cancel</button>

@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var registerSchema = new schema({
+var registerSchema = new Schema({
 	firstName:{
 		type: String,
 		required: true

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Link, withRouter } from "react-router-dom";
 import { connect } from 'react-redux';
+import LoggedInUser from './LoggedInUser';
 
 class Header extends Component {
 
@@ -91,6 +92,7 @@ class Header extends Component {
 					      </div>
 			      	:
 					    <div className="buttons">
+					    	<LoggedInUser />
 				      	<a
 				      		to="/users/login"
 				      		className="button is-primary"

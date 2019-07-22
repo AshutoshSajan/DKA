@@ -8,7 +8,7 @@ class LoggedInUser extends Component {
 		const user = this.props.user || null;
 		console.log(this.props, user, "LoggedInUser");
 		return (
-			<>
+			<div>
 				{
 					user.user ?
 						<Link to="/users/profile" style={{ display:'flex', justifyContent: "flex-end", padding:'10px 20px'}}>
@@ -28,7 +28,7 @@ class LoggedInUser extends Component {
 		      	</Link>
 		      : null
 		    }
-		  </>
+		  </div>
 		);
 	}
 }

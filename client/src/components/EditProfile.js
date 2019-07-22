@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from "react-router-dom";
 import { connect } from 'react-redux';
-import axios from 'axios';
+// import axios from 'axios';
 
 
 class EditProfile extends Component {
@@ -15,7 +15,7 @@ class EditProfile extends Component {
       userName: this.props.user.user ? this.props.user.user.userName : "",
       email: this.props.user.user ? this.props.user.user.email : "",
       dob: this.props.user.user ? this.props.user.user.dob : "",
-      number: this.props.user.user ? this.props.user.user.mobile : "",
+      phone: this.props.user.user ? this.props.user.user.phone : "",
       photo: this.props.user.user ? this.props.user.user.photo : "",
       belt: this.props.user.user ? this.props.user.user.belt : "",
       rank: this.props.user.user ? this.props.user.user.rank : "",
@@ -29,6 +29,7 @@ class EditProfile extends Component {
     var id = this.props.user.user._id;
     const token = localStorage.getItem("jwt") || "" ;
     if(token){
+    	// token were not avilable
 	   //  axios.put(`http://localhost:3000/api/v1/users/update/${this.props.user.user._id}`,
 	   //  	{
     //       headers: {"Authorization" : token }
@@ -129,10 +130,10 @@ class EditProfile extends Component {
 	  						/>
 	  					<input
 	  						type="number"
-	  						name="number"
+	  						name="phone"
 	  						placeholder="Phone Number"
 	  						onChange={ this.handleChange }
-	  						value={this.state.number} 
+	  						value={this.state.phone} 
 	  						style={{width:"20vw", fontSize:'1rem', padding:"0.4 1.2rem", margin: "1.2rem 0", borderBottom:'1px solid #666'}}
 	  						/>
 
@@ -147,7 +148,7 @@ class EditProfile extends Component {
 	  					<input
 	  						type="text"
 	  						name="rank"
-	  						placeholder="Kyu/9th"
+	  						placeholder="9th/Kyu"
 	  						value={this.state.rank}
 	  						onChange={ this.handleChange }
 	  						style={{width:"20vw", fontSize:'1rem', padding:"0.4 1.2rem", margin: "1.2rem 0", borderBottom:'1px solid #666'}}
