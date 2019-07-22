@@ -67,6 +67,10 @@ var userSchema = new Schema({
 		type: Boolean,
 		default: false,
 	},
+	dojo: {
+		type: String,
+		default: ""
+	}
 }, { timestamps: true });
 
 userSchema.pre('save', function (next) {

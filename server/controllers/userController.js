@@ -73,10 +73,15 @@ module.exports = {
 	},
 
 	updateUser : (req,res) => {
-		console.log(req.params.id, req.user,"inside server updateUser...");
+		console.log(req.params.id, req.body, req.user,"inside server updateUser...");
 		User.findOneAndUpdate({ _id: req.user.id }, req.body, { new: true }, (err,user) => {
-			if(err) res.status(500).send(err);
-			res.status(200).json({ success: true, user });
+			if(err) {
+				console.log("update profile check1...");
+				return res.status(500).send(err);
+			} else if(user) {
+				console.log("update profile check2...");
+				res.status(200).json({ success: true, user });
+			}
 		})
 	},
 

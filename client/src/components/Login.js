@@ -52,9 +52,30 @@ class Login extends Component {
 					{/*<div className="logo">
 						<img src="../../public/icon.png" alt="logo" />
 					</div>*/}
-				  <input onChange={this.handleChange} name='email' placeholder='E-Mail Address' type='text' value={ this.state.user.email } required/>
-				  <input onChange={this.handleChange} id='pw' name='password' placeholder='Password' type='password' value={ this.state.user.password } required/>
-				  <button type="button" className="button is-success is-small" onClick={this.handleLogin}>Login</button>
+				  <input
+				  	required
+				  	type='text'
+				  	name='email'
+				  	placeholder='E-Mail Address'
+				  	onChange={this.handleChange}
+				  	value={ this.state.user.email }
+				  	/>
+				  <input
+				  	id='pw'
+				  	required
+				  	type='password'
+				  	name='password'
+				  	placeholder='Password'
+				  	onChange={this.handleChange}
+				  	value={ this.state.user.password }
+				  	/>
+				  <button
+				  	type="button"
+				  	className="button is-success is-small"
+				  	onClick={this.handleLogin}
+				  	>
+				  	Login
+				  </button>
 				</form>
 
 			  <div className="login-flex">

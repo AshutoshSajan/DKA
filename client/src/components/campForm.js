@@ -163,7 +163,10 @@ class campForm extends Component {
 				<div className="field">
 				  <p className="label">Why Karate</p>
 				  <div className="control">
-				    <textarea className="textarea" placeholder="Please tell us why you want to learn Karate"></textarea>
+				    <textarea
+				    	className="textarea"
+				    	placeholder="Please tell us why you want to learn Karate">
+				    </textarea>
 				  </div>
 				</div>
 

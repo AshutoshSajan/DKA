@@ -32,27 +32,47 @@ class Students extends Component {
 	render() {
     const { students } = this.state;
 		return (
-      <div className="container is-fluid" style={{display: 'flex', flexWrap:'wrap', justifyContent:'space-evenly'}}>
+      <div
+        className="container is-fluid"
+          style={{display: 'flex', flexWrap:'wrap', justifyContent:'space-evenly'}}
+          >
         {
-          students ? students.map(student => (
-            <div class="card" style={{ margin: "1.2rem"}} key={student._id}>
-              <div class="card-image">
-                <figure class="image is-4by3">
-                  <img src="https://bulma.io/images/placeholders/1280x960.png" alt={student.username +"'s"+" "+ "image" || "profile image" }/>
+          students ?
+            students.map(student => (
+            <div
+              className="card"
+              style={{
+                margin: "1.2rem",
+                width: "18rem",
+                height: "22rem"
+              }}
+              key={student._id}
+              >
+              <div className="card-image">
+                <figure className="image is-4by3">
+                  <img
+                    src="https://bulma.io/images/placeholders/1280x960.png" 
+                    alt={student.username +"'s"+" "+ "image" || "profile image" }
+                    />
                 </figure>
               </div>
-              <div class="card-content">              
-                <div class="media-content">
-                  <p class="title is-4">John Smith</p>
-                  <p class="subtitle is-6">@johnsmith</p>
+              <div className="card-content">              
+                <div className="media-content">
+                  <p className="title is-4">
+                    { student.firstName +" "+ student.lastName }
+                  </p>
+                  <p className="subtitle is-6">
+                    Kyu: {student.rank || "9th"}
+                  </p>
                 </div>
-                <div class="content">
-                  <p></p>
-                  <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+                <div className="content">
+                  <p>{""}</p>
+                  <p>Belt: { student.belt || "white"}</p>
                 </div>
               </div>
             </div>
-          )):null
+          ))
+          : null
         }
       </div>
 		);

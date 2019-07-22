@@ -71,7 +71,7 @@ class EditProfile extends Component {
 
   fileHandler = (e) => {
   	console.log(e.target.files[0]);
-  	this.setState({photo:  e.target.files[0] });
+  	this.setState({ photo: e.target.files[0] });
   }
 
 

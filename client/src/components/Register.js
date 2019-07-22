@@ -69,14 +69,42 @@ class Register extends Component {
 
 	render() {
 		return (
-			<div className="container" style={{ border: "1px solid rgba(0,0,0,0.2)", padding: "2.5rem 4rem", borderRadius:'4px', width: "50%", margin:"0 auto"}}>
+			<div
+				className="container"
+				style={{
+					border:"1px solid rgba(0,0,0,0.2)",
+					padding: "2.5rem 4rem",
+					borderRadius:'4px',
+					width:"50%",
+					margin:"0 auto"
+				}}>
 					
 				{/*<p className="register-error">{ this.state.error || "" }</p> */}
-				<div style={{display:'flex', alignItems:'center', flexWrap:'wrap', paddingBottom: '2rem'}}>
-					<img style={{ marginRight:'20px'}}src="/dka.jpeg" alt="logo" height="50" width="50"/>
+				<div 
+					style={{
+						display:'flex',
+						alignItems:'center',
+						flexWrap:'wrap',
+						paddingBottom:'2rem'
+					}}
+					>
+					<img
+						style={{
+							marginRight:'20px'
+						}}
+						src="/dka.jpeg"
+						alt="logo"
+						height="50"
+						width="50"
+						/>
 					<p>Wellcome to Dhauladhar Karate Acedemy plese fill up the form to join us</p>
 				</div>
-				<div style={{ display: "flex" , justifyContent:'space-between', flexWrap:'wrap'}}>
+				<div style={{
+						display:"flex",
+						justifyContent:'space-between',
+						flexWrap:'wrap'
+					}}
+					>
 					<div className="field">
 					  <div className="field">
 						  <p className="label">First Name</p>
@@ -122,7 +150,9 @@ class Register extends Component {
 						      <i className="fas fa-check"></i>
 						    </span>
 						  </div>
-						  <p className="help is-success">{this.state.error.lastName}</p>
+						  <p className="help is-success">
+						  	{this.state.error.lastName}
+						  </p>
 						</div>
 					</div>
 
@@ -353,10 +383,11 @@ class Register extends Component {
 				    <textarea 
 				    	name="info"
 				    	className="textarea"
-				    	value={this.state.info}>
+				    	value={this.state.info}
 				    	onChange={this.handleChange}
 				    	placeholder="Please tell us why you want to learn Karate ?"
-				    	</textarea>
+				    	>
+				    </textarea>
 				  </div>
 				</div>
 

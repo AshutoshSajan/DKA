@@ -40,7 +40,11 @@ class Profile extends Component {
       <div style={{width: "30vw", margin:"0 auto"}}>
         <div
           className="button-box"
-          style={{ display: "flex", justifyContent:"center", zIndex:'50'}}
+          style={{
+            display:"flex",
+            justifyContent:"center",
+            zIndex:'50'
+          }}
           >
           <button
             style={{margin: "0 5px"}}
@@ -60,38 +64,83 @@ class Profile extends Component {
         {     
           this.state.showProfile ? 
             <div
-              style={{display: "grid", placeItems:"center", marginBottom: '4.5rem'}}
+              style={{ 
+                display:"grid",
+                placeItems:"center",
+                marginBottom:'4.5rem'
+              }}
               >
               <div
-                style={{ width: "30vw", margin:"1.4rem auto", padding:'2.5rem', boxShadow:" -0.5px -0.5px 0 0 rgba(0,0,0,0.175), 2px 2px 10px 1px rgba(0,0,0,0.175)" }}
+                style={{
+                  width:"30vw",
+                  margin:"1.4rem auto",
+                  padding:'2.5rem',
+                  boxShadow:"-0.5px -0.5px 0 0 rgba(0,0,0,0.175),2px 2px 10px 1px rgba(0,0,0,0.175)"
+                }}
                 >
                 <figure
                   style={{ textAlign:'center' }}
                   >
                   <h5
-                    style={{ fontSize: '1.8rem', textTransform:'capitalize' }}
+                    style={{
+                      fontSize:'1.8rem',
+                      textTransform:'capitalize'
+                    }}
                     className="userInfo"
                     >
-                    { this.state.username ? this.state.username.toUpperCase() : "" }
+                    {
+                      this.state.username ?
+                      this.state.username.toUpperCase()
+                      : ""
+                    }
                   </h5>
                   
                   { 
                     this.state.photo ? 
                       <div
-                        style={{ height: "12.5rem", display: 'inline-block', width: "12.5rem", borderRadius:'50%', margin: "1.2rem auto" }}
+                        style={{
+                          height:"12.5rem",
+                          display:'inline-block',
+                          width: "12.5rem",
+                          borderRadius:'50%',
+                          margin:"1.2rem auto"
+                        }}
                         >
                         <img
                           alt="Profile photo"
-                          style={{ height: "100%", width: "100%", borderRadius:'50%' }}
+                          style={{
+                            height:"100%",
+                            width:"100%",
+                            borderRadius:'50%'
+                          }}
                           src={ this.props.user.user.photo || null }
                         />
                       </div>
                     :
                       <div
-                        style={{ height: "12.5rem", width: "12.5rem", borderRadius:'50%', background: "#00d1b2", display:"grid", placeItems:"center", margin: "1.2rem auto"}}
+                        style={{
+                          height:
+                          "12.5rem",
+                          width:"12.5rem",
+                          borderRadius:'50%',
+                          background: "#00d1b2",
+                          display:"grid",
+                          placeItems:"center",
+                          margin: "1.2rem auto"
+                        }}
                         >
                         <span
-                          style={{fontSize:'3rem', color:"#fff", fontWeight:'bold'}}>{this.state.username ? this.state.username.slice(0,1).toUpperCase(): ""}
+                          style={{
+                            fontSize:'3rem',
+                            color:"#fff",
+                            fontWeight:'bold'
+                          }}
+                          >
+                          {
+                            this.state.username ?
+                            this.state.username.slice(0,1).toUpperCase()
+                            : ""
+                          }
                         </span>
                       </div>
                   }
@@ -99,34 +148,54 @@ class Profile extends Component {
                 </figure>
                 <h5
                   className="userInfo"
-                  style={{fontSize:'1.5rem', textTransform:'uppercase', padding: "0.5rem 0"}}
+                  style={{
+                    fontSize:'1.5rem',
+                    textTransform:'uppercase',
+                    padding:"0.5rem 0"
+                  }}
                   >
                   First Name :
                 </h5>
                 <h3>{this.state.firstName || "Not Available"}</h3>
                 <h5
                   className="userInfo"
-                  style={{fontSize:'1.5rem', textTransform:'uppercase', padding: "0.5rem 0"}}
+                  style={{
+                    fontSize:'1.5rem',
+                    textTransform:'uppercase',
+                    padding: "0.5rem 0"
+                  }}
                   >
                   Last Name :
                 </h5>
                 <h3>{this.state.lastName || "Not Available"}</h3>
                 <h5
                   className="userInfo"
-                  style={{fontSize:'1.5rem', textTransform:'uppercase', padding: "0.5rem 0"}}
+                  style={{
+                    fontSize:'1.5rem',
+                    textTransform:'uppercase',
+                    padding: "0.5rem 0"
+                  }}
                   >
                   Name :
                 </h5>
                 <h3>{this.state.username || "Not Available"}</h3>
                 <h5
-                  style={{fontSize:'1.5rem', textTransform:'uppercase', padding: "0.5rem 0"}}
+                  style={{
+                    fontSize:'1.5rem',
+                    textTransform:'uppercase',
+                    padding: "0.5rem 0"
+                  }}
                   className="userInfo"
                   >
                   Email :
                 </h5>
                 <h3>{this.state.email || "Not Available"}</h3>
                 <h5
-                  style={{fontSize:'1.5rem', textTransform:'uppercase', padding: "0.5rem 0"}}
+                  style={{
+                    fontSize:'1.5rem',
+                    textTransform:'uppercase',
+                    padding:"0.5rem 0"
+                  }}
                   className="userInfo"
                   >
                   Phone Number :
@@ -134,7 +203,11 @@ class Profile extends Component {
                 <h3>{this.state.phoneNumber || "Not Available"}</h3>
                 <h5
                   className="userInfo"
-                  style={{fontSize:'1.5rem', textTransform:'uppercase', padding: "0.5rem 0"}}
+                  style={{
+                    fontSize:'1.5rem',
+                    textTransform:'uppercase',
+                    padding:"0.5rem 0"
+                  }}
                   >
                   DOB :
                 </h5>
