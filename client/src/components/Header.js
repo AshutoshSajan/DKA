@@ -6,7 +6,8 @@ import LoggedInUser from './LoggedInUser';
 class Header extends Component {
 
 	state = {
-		toggleClass: true
+		toggleClass: true,
+
 	}
 
 	handleLogout = (e) => {
@@ -21,6 +22,7 @@ class Header extends Component {
 
 	showHamburger = (e) => {
 		console.log(e.target.dataset);
+		this.setState({ toggleClass: !this.state.toggleClass });
 	}
 
 	render() {
@@ -40,22 +42,49 @@ class Header extends Component {
 
 			    <a role="button" className="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample"
 			    onClick={this.showHamburger}>
-			      <span aria-hidden="true">aria-expanded</span>
-			      <span aria-hidden="true">aria-expanded</span>
-			      <span aria-hidden="true">aria-expanded</span>
+				    <div className={ this.state.toggleClass ? "show" : "hide hamburgerMenu" } >
+				      
+				    	<div className="navbar-start">
+								<Link to="/" className="navbar-item">Home</Link>
+
+					      <Link to="/users/students" className="navbar-item">Students</Link>
+					      <Link to="/users/instructors" className="navbar-item">Instructors</Link>
+					      <Link to="/organisation/contact" className="navbar-item">Contact</Link>
+					      <Link to="/users/apply" className="navbar-item">Join acedemy</Link>
+					      <Link to="/organisations/camps" className="navbar-item">Camps</Link>
+					      <Link to="/organisation/documentation" className="navbar-item">Documentation</Link>
+						      
+					      <div className="navbar-item has-dropdown is-hoverable">
+					        <a className="navbar-link">
+					          More
+					        </a>
+
+					        <div className="navbar-dropdown">
+						      		<Link to="/state" className="navbar-item">State</Link>
+						      		<Link to="/district" className="navbar-item">District</Link>
+						      		<Link to="/national" className="navbar-item">National</Link>
+						          <a className="navbar-item">
+						            Report an issue
+						          </a>
+					        </div>
+					      </div>
+					    </div>
+
+
+			      </div>
 			    </a>
 			  </div>
 
 			  <div id="navbarBasicExample" className="navbar-menu">
 			    <div className="navbar-start">
-							<Link to="/" className="navbar-item">Home</Link>
+						<Link to="/" className="navbar-item">Home</Link>
 
-				      <Link to="/users/students" className="navbar-item">Students</Link>
-				      <Link to="/users/instructors" className="navbar-item">Instructors</Link>
-				      <Link to="/organisation/contact" className="navbar-item">Contact</Link>
-				      <Link to="/users/apply" className="navbar-item">Join acedemy</Link>
-				      <Link to="/organisations/camps" className="navbar-item">Camps</Link>
-				      <Link to="/organisation/documentation" className="navbar-item">Documentation</Link>
+			      <Link to="/users/students" className="navbar-item">Students</Link>
+			      <Link to="/users/instructors" className="navbar-item">Instructors</Link>
+			      <Link to="/organisation/contact" className="navbar-item">Contact</Link>
+			      <Link to="/users/apply" className="navbar-item">Join acedemy</Link>
+			      <Link to="/organisations/camps" className="navbar-item">Camps</Link>
+			      <Link to="/organisation/documentation" className="navbar-item">Documentation</Link>
 				      
 			      <div className="navbar-item has-dropdown is-hoverable">
 			        <a className="navbar-link">
