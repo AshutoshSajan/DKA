@@ -35,7 +35,7 @@ class LoggedInUser extends Component {
 			                  <span
 			                  	style={{color:"#fff"}}
 			                  	>
-			                  	{user.user ? user.user.userName.slice(0,1).toUpperCase() : "" }
+			                  	{user.user && user.user.userName ? user.user.userName.slice(0,1).toUpperCase() : "" }
 			                  </span>
 			                </div>
 			              }

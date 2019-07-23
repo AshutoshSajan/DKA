@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt');
 const mailer = require('../utils/mail');
 const token = require('../utils/token');
 
-console.log(mailer, mailer.mail, "inside user controller");
+// console.log(mailer, mailer.mail, "inside user controller");
 
 module.exports = {
 	getAllUsers: (req,res) => {
@@ -35,13 +35,14 @@ module.exports = {
 
 				var isValidPassword = bcrypt.compareSync(req.body.password, user.password);
 				console.log(isValidPassword, "isValidPassword..");
-				var token = jwt.sign({ id: user._id }, process.env.SIGN);
+				var token = jwt.sign({ id: user._id }, process.env.JWT_SIGN);
 				if(!isValidPassword){
 					console.log(req.body, "login data check4");
 
 					res.status(401).json({ success: false, massage: "Invalid pasword" })
 				} else if(isValidPassword){
-					res.status(200).json({ success: true, user, token })
+					var newUser = Object.keys(user).filter(v => !v === "password" );
+					res.status(200).json({ success: true, user: newUser, token })
 				}
 			} else {
 				res.status(400).json({ success: false, error: "user does not found"})
@@ -63,7 +64,7 @@ module.exports = {
 					if(user){
 						user.token = token.generate_token(6);
 						user.save();
-						mailer.mail(user.email, user.token).catch(console.error);
+						// mailer.mail(user.email, user.token).catch(console.error);
 						res.status(201).json({ success: true, massage: "user registerd succesfully" })
 					}
 				})
@@ -72,10 +73,10 @@ module.exports = {
 	},
 
 	verifyToken: (req,res) => {
-		console.log(req.user, "insede me");
-		User.findOne({ _id: req.user.id }, (err,user) => {
-			if(err) res.status(500).send(err);
-			res.status(200).json({ success: true, user });
+		console.log(req.user, "insede verify token /me route");
+		User.findOne({ _id: req.user.id }).select('-password').exec((err,user) => {
+			if(err) return res.status(500).send(err);
+			else return res.status(200).json({ success: true, user });
 		})
 	},
 
