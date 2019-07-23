@@ -44,7 +44,8 @@ class Students extends Component {
               style={{
                 margin: "1.2rem",
                 width: "18rem",
-                height: "22rem"
+                height: "22rem",
+                boxShadow: "13px 32px 36px -14px hsla(0, 0%, 70%, 0.3)"
               }}
               key={student._id}
               >

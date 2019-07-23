@@ -9,7 +9,7 @@ exports.verifyToken = function(req, res, next) {
 	if(!token) {
     return res.status(401).send({ message: 'Please authenticate... '});
   } else if(token){
-			jwt.verify(token, process.env.SIGN, function(err, decoded){
+			jwt.verify(token, process.env.JWT_SIGN, function(err, decoded){
 			if(err) {
 				return res.status(500).json({ success: false, message: "Token validation error" });
 			} else if(decoded && decoded.id){

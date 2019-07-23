@@ -21,8 +21,8 @@ class Instructors extends Component {
           this.setState({ instructors: res.data.users });
         }
       })
-      .catch(function (error) {
-        console.log(error, "catch error");
+      .catch(function (err) {
+        console.log(err, "catch error");
       });
     } else {
       this.props.history.push("/users/login")
@@ -48,7 +48,8 @@ class Instructors extends Component {
                 style={{
                   margin: "1.2rem",
                   width: "22rem",
-                  height: "30rem"
+                  height: "30rem",
+                  boxShadow: "13px 32px 36px -14px hsla(0, 0%, 70%, 0.3)"
                 }}
                 key={instructor._id}>
                 <div

@@ -1,6 +1,10 @@
 var User = require ('../models/User');
 var jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
+const mailer = require('../utils/mail');
+const token = require('../utils/token');
+
+console.log(mailer, mailer.mail, "inside user controller");
 
 module.exports = {
 	getAllUsers: (req,res) => {
@@ -57,6 +61,9 @@ module.exports = {
 				User.create(req.body, (err,user) => {
 					if(err) return res.status(500).json({ success: false, error: err, message: "Server side error" })
 					if(user){
+						user.token = token.generate_token(6);
+						user.save();
+						mailer.mail(user.email, user.token).catch(console.error);
 						res.status(201).json({ success: true, massage: "user registerd succesfully" })
 					}
 				})
@@ -70,6 +77,24 @@ module.exports = {
 			if(err) res.status(500).send(err);
 			res.status(200).json({ success: true, user });
 		})
+	},
+
+	verifyAccount: (erq,res) => {
+		var token = req.params.token;
+		var mail = req.params.mail;
+
+		console.log(token, 'inside verifyAccount');
+		User.findOne({ mail }).exec(function(err, user) {
+			if(user) {
+				console.log(user, "user found in verify account");
+				user.isVerified = true;
+				user.token = "";
+				user.save();
+				return res.status(200).redirect('/');
+			} else {
+				return res.status(400).send({ message: 'Wrong Token' });
+			}
+		});
 	},
 
 	updateUser : (req,res) => {
@@ -96,7 +121,7 @@ module.exports = {
 	getAllStudents: (req,res) => {
 		console.log("inside all students");
 
-		User.find({}, (err, users) => {
+		User.find({ isStudent: true }, (err, users) => {
 			if(err) {
 				return res.status(500).json({ success: false, error: err, massage: "Server error" });
 			}
@@ -109,7 +134,7 @@ module.exports = {
 	getInstructors: (req,res) => {
 		console.log("inside all students");
 
-		User.find({}, (err, users) => {
+		User.find({ isSenior: true }, (err, users) => {
 			if(err) {
 				return res.status(500).json({ success: false, error: err, massage: "Server error" });
 			}

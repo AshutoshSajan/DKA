@@ -78,7 +78,7 @@ userSchema.pre('save', function (next) {
 		this.password = bcrypt.hashSync(this.password, salt);
 	}
 
-	if(this.email === process.env.MAIL || this.email === process.env.ADMIN){
+	if(this.email === process.env.EMAIL || this.email === process.env.ADMIN){
 		this.isAdmin = true;
 	}
 	next();
