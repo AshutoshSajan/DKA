@@ -13,6 +13,9 @@ import Profile from './components/Profile';
 import Contact from './components/Contact'
 import Students from './components/Students'
 import Register from './components/Register';
+import CampForm from './components/CampForm';
+import IssueForm from './components/IssueForm';
+import AdminDash from './components/AdminDash';
 import Instructors from './components/Instructors'
 import EditProfile from './components/EditProfile';
 import PrivateRoute from './components/PrivateRoute';
@@ -55,6 +58,9 @@ class App extends Component {
         	<Route path="/users/profile" component = {Profile}/>
           <Route path="/users/students" component = {Students}/>
           <Route path="/organisation/contact" component = {Contact}/>
+          <Route path="/users/admin" component = {AdminDash}/>
+          <Route path="/organisations/camps" component = {CampForm}/>
+          <Route path="/organisations/issues" component={IssueForm}/>
           <Route path="/users/instructors" component = {Instructors}/>
           <Route path="/users/edit-profile/:id" component = {EditProfile}/>
         </Switch>

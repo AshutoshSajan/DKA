@@ -37,7 +37,10 @@ class Profile extends Component {
 	render(){
     console.log(this.props,"profile rndr");
 		return( 
-      <div style={{width: "30vw", margin:"0 auto"}}>
+      <div
+        style={{
+          width: "30vw", margin:"20px auto"
+        }}>
         <div
           className="button-box"
           style={{

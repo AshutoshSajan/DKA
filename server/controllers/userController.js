@@ -122,7 +122,7 @@ module.exports = {
 	getAllStudents: (req,res) => {
 		console.log("inside all students");
 
-		User.find({ isStudent: true }, (err, users) => {
+		User.find({}, (err, users) => {
 			if(err) {
 				return res.status(500).json({ success: false, error: err, massage: "Server error" });
 			}

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export class AdminDash extends Component {
+class AdminDash extends Component {
 	
 	state = {}
 
@@ -15,40 +15,47 @@ export class AdminDash extends Component {
 	render() {
 		return (
 			<div>
-				<form>
+				<form className="admin-form">
 					<input
+					className="input is-success"
 						type="text"
 						name=""
 						value={this.state.images}
 						onChange={this.handleChange}
-						/>
+					/>
 					<input
+					className="input is-success"
 						type="text"
 						name=""
 						value={this.state.images}
 						onChange={this.handleChange}
-						/>
-						<input
-						type="text"
-						name=""
-						value={this.state.images}
-						onChange={this.handleChange}
-						/>
-						<input
-						type="text"
-						name=""
-						value={this.state.images}
-						onChange={this.handleChange}
-						/>
-						<input
-						type="text"
-						name=""
-						value={this.state.images}
-						onChange={this.handleChange}
-						/>
+					/>
+					<input
+					className="input is-success"
+					type="text"
+					name=""
+					value={this.state.images}
+					onChange={this.handleChange}
+					/>
+					<input
+					className="input is-success"
+					type="text"
+					name=""
+					value={this.state.images}
+					onChange={this.handleChange}
+					/>
+					<input
+					className="input is-success"
+					type="text"
+					name=""
+					value={this.state.images}
+					onChange={this.handleChange}
+					/>
 
 				</form>
 			</div>
 		);
 	}
 }
+
+export default AdminDash;

@@ -70,13 +70,12 @@ class Register extends Component {
 	render() {
 		return (
 			<div
-				className="container"
 				style={{
 					border:"1px solid rgba(0,0,0,0.2)",
 					padding: "2.5rem 4rem",
 					borderRadius:'4px',
 					width:"50%",
-					margin:"0 auto"
+					margin:"20px auto"
 				}}>
 					
 				{/*<p className="register-error">{ this.state.error || "" }</p> */}

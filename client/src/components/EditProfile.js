@@ -25,7 +25,7 @@ class EditProfile extends Component {
   }
 
 	handleUpdate = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     var id = this.props.user.user._id;
     const token = localStorage.getItem("jwt") || "" ;
     if(token){
@@ -59,7 +59,7 @@ class EditProfile extends Component {
 	    .then(res => res.json())
 	    .then(data => {
     		console.log(data, "updated data");
-    		this.props.history.push('/users/profile');
+    		this.props.history.push('/');
 	    });
 	  }
   }
@@ -168,13 +168,13 @@ class EditProfile extends Component {
 	  						name="photo"
 	  						onChange={this.fileHandler}
 	  						/>
-	  					<button
+	  					<a
 	  						type="submit"
 	  						onClick={this.handleUpdate}
 	  						className="button is-danger"
 	  						>
 	  						Save
-	  					</button>
+	  					</a>
 	          </div>
 	        : null 
 	      }

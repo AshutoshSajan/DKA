@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Link, withRouter } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import { connect } from 'react-redux';
 import LoggedInUser from './LoggedInUser';
 
@@ -32,13 +32,23 @@ class Header extends Component {
 		return (
 			<nav className="navbar" role="navigation" aria-label="main navigation">
 			  <div className="navbar-brand">
-			  	<Router>
-				    <Link to="/" className="navbar-brand">
-			    		<div className="logo-container">
-						  	<img className="logo" src="/dka.jpeg" alt="logo" width="80" height="80"/>
-						  </div>
-					  </Link>
-				  </Router>
+			    <Link
+			    	to="/"
+			    	className="navbar-brand"
+			    	>
+		    		<div
+		    			className="logo-container"
+		    			>
+					  	<img
+					  		className="logo"
+					  		src="/dka.jpeg"
+					  		alt="logo"
+					  		width="80"
+					  		height="80"
+					  		/>
+					  </div>
+				  </Link>
+
 
 			    <a role="button" className="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample"
 			    onClick={this.showHamburger}>
@@ -51,7 +61,9 @@ class Header extends Component {
 					      <Link to="/users/instructors" className="navbar-item">Instructors</Link>
 					      <Link to="/organisation/contact" className="navbar-item">Contact</Link>
 					      <Link to="/users/apply" className="navbar-item">Join acedemy</Link>
+					      <Link to="/users/admin" className="navbar-item">Dashboard</Link>
 					      <Link to="/organisations/camps" className="navbar-item">Camps</Link>
+					      
 					      <Link to="/organisation/documentation" className="navbar-item">Documentation</Link>
 						      
 					      <div className="navbar-item has-dropdown is-hoverable">
@@ -60,12 +72,33 @@ class Header extends Component {
 					        </a>
 
 					        <div className="navbar-dropdown">
-						      		<Link to="/state" className="navbar-item">State</Link>
-						      		<Link to="/district" className="navbar-item">District</Link>
-						      		<Link to="/national" className="navbar-item">National</Link>
-						          <a className="navbar-item">
-						            Report an issue
-						          </a>
+						      		<Link
+						      			to="/state" 
+						      			className="navbar-item"
+						      			>
+						      			State
+						      		</Link>
+						      		<Link
+						      			to="/district" 
+						      			className="navbar-item"
+						      			>
+						      			District
+						      		</Link>
+						      		{
+							      		/*<Link
+							      			to="/national" 
+							      			className="navbar-item"
+							      			>
+							      			National
+							      		</Link>*/
+						      		}
+						      		<Link
+						      			to="/organisations/issues" 
+						      			className="navbar-item"
+						      			>
+						      			Report an issue
+						      		</Link>
+						          {/* <a className="navbar-item"></a> */}
 					        </div>
 					      </div>
 					    </div>
@@ -77,14 +110,56 @@ class Header extends Component {
 
 			  <div id="navbarBasicExample" className="navbar-menu">
 			    <div className="navbar-start">
-						<Link to="/" className="navbar-item">Home</Link>
+						<Link
+							to="/"
+							className="navbar-item"
+							>
+							Home
+						</Link>
 
-			      <Link to="/users/students" className="navbar-item">Students</Link>
-			      <Link to="/users/instructors" className="navbar-item">Instructors</Link>
-			      <Link to="/organisation/contact" className="navbar-item">Contact</Link>
-			      <Link to="/users/apply" className="navbar-item">Join acedemy</Link>
-			      <Link to="/organisations/camps" className="navbar-item">Camps</Link>
-			      <Link to="/organisation/documentation" className="navbar-item">Documentation</Link>
+			      <Link
+			      	to="/users/students"
+			      	className="navbar-item"
+			      	>
+			      	Students
+			      </Link>
+			      <Link
+			      	to="/users/instructors"
+			      	className="navbar-item"
+			      	>
+			      	Instructors
+			      </Link>
+			      <Link
+			      	to="/organisation/contact"
+			      	className="navbar-item"
+			      	>
+			      	Contact
+			      </Link>
+			      <Link
+			      	to="/users/apply"
+			      	className="navbar-item"
+			      	>
+			      	Join acedemy
+			      </Link>
+			      <Link
+			      	to="/organisations/camps"
+			      	className="navbar-item"
+			      	>
+			      	Camps
+			      </Link>
+			      <Link
+			      	to="/users/admin"
+			      	className="navbar-item"
+			      	>
+			      	Dashboard
+			      </Link>
+			      <Link
+			      	to="/organisation/documentation"
+			      	className="navbar-item"
+			      	>
+			      	Documentation
+			      </Link>
+
 				      
 			      <div className="navbar-item has-dropdown is-hoverable">
 			        <a className="navbar-link">
@@ -92,12 +167,30 @@ class Header extends Component {
 			        </a>
 
 			        <div className="navbar-dropdown">
-				      		<Link to="/state" className="navbar-item">State</Link>
-				      		<Link to="/district" className="navbar-item">District</Link>
-				      		<Link to="/national" className="navbar-item">National</Link>
-				          <a className="navbar-item">
-				            Report an issue
-				          </a>
+			      		<Link
+			      			to="/state"
+			      			className="navbar-item"
+			      			>
+			      			State
+			      		</Link>
+			      		<Link
+			      			to="/district"
+			      			className="navbar-item"
+			      			>
+			      			District
+			      		</Link>
+			      		<Link
+			      			to="/national"
+			      			className="navbar-item"
+			      			>
+			      			National
+			      		</Link>
+			          <Link
+			      			to="/organisations/issues" 
+			      			className="navbar-item"
+			      			>
+			      			Report an issue
+			      		</Link>
 			        </div>
 			      </div>
 			    </div>
