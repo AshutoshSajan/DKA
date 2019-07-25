@@ -12,14 +12,13 @@ class IssueForm extends Component {
 
 	// handleChange function for controlled input
 	handleChange = (e) => {
-		e.preventDefault();
 		const { name, value } = e.target;
 		console.log(name,value, "inside handleChange issue");
-		
 		this.setState({ [name]: value });
 	}
 
 	handleSubmit = () => {
+		e.preventDefault();
 		const {
 			email,
 			severity,
@@ -30,11 +29,12 @@ class IssueForm extends Component {
 		} = this.state;
 
 		if(email && this.validateEmail(email) && severity && priority, summary&& description){
+			console.log(this.state, "inside handleSubmit");
 			fetch(`http://localhost:3000/api/v1/issues/${this.props.user._id}`, {
-				method: "POST",
+				method: 'POST',
 				headers: {
-					"Content-type": "application/json"
-					"Authorization": localStorage.getItem("jwt")
+					'Content-type': 'application/json',
+					'Authorization': localStorage.getItem("jwt")
 				},
 				body: JSON.stringify(this.state)
 			})
@@ -140,31 +140,6 @@ class IssueForm extends Component {
 							padding: "1rem 0 0.5rem 0",
 							fontWeight:"bold"
 						}}
-						>
-						Reproducibility
-					</p>
-					<select
-						id="data_5"
-						name="reproducibility"
-						style={{
-							width : "28rem"
-						}}
-						onChange={this.handleChange}
-						className="form-control"
-						>
-						<option>10%</option>
-						<option>25%</option>
-						<option>50%</option>
-						<option>75%</option>
-						<option>100%</option>
-					</select>
-				</div>
-				<div>
-					<p style=
-						{{
-							padding: "1rem 0 0.5rem 0",
-							fontWeight:"bold"
-						}}
 						> 
 						Summary
 					</p>
@@ -191,7 +166,6 @@ class IssueForm extends Component {
 					</p>
 					<textarea
 						id="data_7"
-						false 
 						name="description" 
 						style={{
 							width : "28rem"
