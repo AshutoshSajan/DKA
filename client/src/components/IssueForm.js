@@ -23,7 +23,6 @@ class IssueForm extends Component {
 			email,
 			severity,
 			priority,
-			reproducibility,
 			summary,
 			description
 		} = this.state;
@@ -42,6 +41,8 @@ class IssueForm extends Component {
 			.then(data => {
 				console.log(data, "issue report data");
 			})
+		} else {
+			console.log("state is empty");
 		}
 	}
 
