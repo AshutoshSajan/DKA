@@ -4,8 +4,8 @@ var jwtAuth = require('../../utils/jwtAuth');
 var issueController = require('../../controllers/issueController');
 
 router.post('/', jwtAuth.verifyToken, issueController.add_Issue);
-router.get('/get-all-issues', jwtAuth.verifyToken, jwtAuth.isAdmin, issueController.get_All_Issues);
-router.get('/get-one-registration', jwtAuth.verifyToken, jwtAuth.isAdmin,issueController.get_Issue);
-router.delete('/delete-issue', jwtAuth.verifyToken, jwtAuth.isAdmin, issueController.delete_Issue);
+router.get('/', jwtAuth.verifyToken, jwtAuth.isAdmin, issueController.get_All_Issues);
+router.get('/:id', jwtAuth.verifyToken, jwtAuth.isAdmin,issueController.get_Issue);
+router.delete('/delete/:id', jwtAuth.verifyToken, jwtAuth.isAdmin, issueController.delete_Issue);
 
 module.exports = router;

@@ -70,7 +70,11 @@ var userSchema = new Schema({
 	dojo: {
 		type: String,
 		default: ""
-	}
+	},
+	issues:[{
+		type: Schema.Types.ObjectId,
+		ref: "Issue"
+	}]
 }, { timestamps: true });
 
 userSchema.pre('save', function (next) {

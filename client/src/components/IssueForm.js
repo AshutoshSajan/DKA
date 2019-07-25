@@ -2,22 +2,28 @@ import React, { Component } from 'react';
 
 class IssueForm extends Component {
 
-	state = {}
+	state = {
+		issue: {}
+	}
 
 	// email validation function
 	validateEmail = (email) => {
 		var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,15}(?:\.[a-z]{2})?)$/i;
-		return this.isEmpty(email) || re.test(email);
+		return re.test(email);
 	}
 
 	// handleChange function for controlled input
 	handleChange = (e) => {
 		const { name, value } = e.target;
-		console.log(name,value, "inside handleChange issue");
-		this.setState({ [name]: value });
+		this.setState({
+			issue: {
+				...this.state.issue,
+				[name]: value
+			}
+		});
 	}
 
-	handleSubmit = () => {
+	handleSubmit = (e) => {
 		e.preventDefault();
 		const {
 			email,
@@ -25,11 +31,10 @@ class IssueForm extends Component {
 			priority,
 			summary,
 			description
-		} = this.state;
+		} = this.state.issue;
 
 		if(email && this.validateEmail(email) && severity && priority, summary&& description){
-			console.log(this.state, "inside handleSubmit");
-			fetch(`http://localhost:3000/api/v1/issues/${this.props.user._id}`, {
+			fetch('http://localhost:3000/api/v1/issues', {
 				method: 'POST',
 				headers: {
 					'Content-type': 'application/json',
@@ -40,6 +45,11 @@ class IssueForm extends Component {
 			.then(res => res.json())
 			.then(data => {
 				console.log(data, "issue report data");
+				if(data.success){
+					this.setState({ issue: {}, massage: data.massage });
+				} else {
+					this.setState({ issue: {}, error: data.error });
+				}
 			})
 		} else {
 			console.log("state is empty");
@@ -67,6 +77,14 @@ class IssueForm extends Component {
 					}}
 					>
 					Report An Issue
+				</p>
+				<p style=
+					{{
+						paddingBottom: "1.2rem",
+						color: "red"
+					}}
+					>
+					{ this.state.error || this.state.massage || "" }
 				</p>
 				
 				<div>

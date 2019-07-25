@@ -24,7 +24,7 @@ var issueSchema = new Schema({
 	},
 	user:{
 		type: Schema.Types.ObjectId,
-		default: ""
+		ref: "User"
 	}
 }, { timestamps: true })
 
