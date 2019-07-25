@@ -86,6 +86,7 @@ class IssueForm extends Component {
 						}}
 						onChange={this.handleChange}
 						className="form-control"
+						required
 						/>
 				</div>
 				<div>
@@ -103,13 +104,15 @@ class IssueForm extends Component {
 						style={{
 							width : "28rem"
 						}}
+						required
 						onChange={this.handleChange}
 						className="form-control">
-						<option>Critical</option>
-						<option>Major</option>
-						<option>Moderate</option>
-						<option>Minor</option>
-						<option>Cosmetic</option>
+						<option value="">Select Severity</option>
+						<option value="critical">Critical</option>
+						<option value="major">Major</option>
+						<option value="moderate">Moderate</option>
+						<option value="minor">Minor</option>
+						<option value="cosmetic">Cosmetic</option>
 					</select>
 				</div>
 				<div>
@@ -127,11 +130,13 @@ class IssueForm extends Component {
 						style={{
 							width : "28rem"
 						}}
+						required
 						onChange={this.handleChange}
 						className="form-control">
-						<option>Low</option>
-						<option>Medium</option>
-						<option>High</option>
+						<option value="">Select Priority</option>
+						<option value="low">Low</option>
+						<option value="medium">Medium</option>
+						<option value="high">High</option>
 					</select>
 				</div>
 				<div>
@@ -151,6 +156,7 @@ class IssueForm extends Component {
 							width : "28rem",
 							border: "1px solid #ced4da"
 						}}
+						required
 						onChange={this.handleChange}
 						className="form-control"
 						/>
@@ -170,6 +176,7 @@ class IssueForm extends Component {
 						style={{
 							width : "28rem"
 						}}
+						required
 						onChange={this.handleChange}
 						rows="6"
 						className="form-control">
