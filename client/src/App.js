@@ -7,6 +7,9 @@ const axios = require('axios');
 import Home from './components/Home';
 import Login from './components/Login';
 import Header from './components/Header';
+
+import Headers from './components/Headers';
+
 import SignUp from './components/SignUp';
 import Footer from './components/Footer';
 import Profile from './components/Profile';
@@ -49,7 +52,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header />
+        <Headers />
         <Switch>
           <Route exact path="/" component = {Home}/>
         	<Route path="/users/login" component = {Login}/>

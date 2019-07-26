@@ -62,7 +62,7 @@ class IssueForm extends Component {
 			<form
 				style={{
 					margin: "1.2rem auto",
-					boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
+					boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
 					width: "30vw",
 					padding: "1.2rem" 
 				}}
@@ -101,7 +101,7 @@ class IssueForm extends Component {
 						id="data_2"
 						name="email"
 						style={{
-							width: "28rem"
+							width: "80%"
 						}}
 						onChange={this.handleChange}
 						className="form-control"
@@ -121,7 +121,7 @@ class IssueForm extends Component {
 						id="data_3"
 						name="severity"
 						style={{
-							width : "28rem"
+							width : "80%"
 						}}
 						required
 						onChange={this.handleChange}
@@ -147,7 +147,7 @@ class IssueForm extends Component {
 						id="data_4"
 						name="priority"
 						style={{
-							width : "28rem"
+							width : "80%"
 						}}
 						required
 						onChange={this.handleChange}
@@ -172,7 +172,7 @@ class IssueForm extends Component {
 						id="data_6"
 						name="summary"
 						style={{
-							width : "28rem",
+							width : "80%",
 							border: "1px solid #ced4da"
 						}}
 						required
@@ -193,7 +193,7 @@ class IssueForm extends Component {
 						id="data_7"
 						name="description" 
 						style={{
-							width : "28rem"
+							width : "90%"
 						}}
 						required
 						onChange={this.handleChange}
