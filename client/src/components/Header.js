@@ -27,7 +27,7 @@ class Header extends Component {
 
 	render() {
 		const { user } = this.props || null;
-		// console.log(this.props, user, user.isAuthInProgress, "header props");
+		console.log(user, user.isAuthInProgress, "header rndr props");
 
 		return (
 			<nav 
@@ -46,110 +46,104 @@ class Header extends Component {
 				  		height="80"
 				  		/>
 				  </div>
-				  <div>
-				    {
-				    	/*<a role="button"
-				    	className="navbar-burger burger"
-				    	aria-label="menu"
-				    	aria-expanded="false"
-				    	data-target="navbarBasicExample"
-				    	onClick={this.showHamburger}
+			  	<a role="button"
+			    	className="navbar-burger burger"
+			    	aria-label="menu"
+			    	aria-expanded="false"
+			    	data-target="navbarBasicExample"
+			    	onClick={this.showHamburger}
+			    	>
+				    <div
+				    	className={
+				    		this.state.toggleClass ?
+				    		"display" : "hide hamburgerMenu"
+				    	}
 				    	>
-					    <div
-					    	className={
-					    		this.state.toggleClass ?
-					    		"display" : "hide hamburgerMenu"
-					    	}
-					    	>
+				      
+				    	<div className="navbar-start">
+								<Link to="/" className="navbar-item">Home</Link>
+
+					      <Link
+					      	to="/users/students"
+					      	className="navbar-item"
+					      	>
+					      	Students
+					      </Link>
+					      <Link
+					      	to="/users/instructors"
+					      	className="navbar-item"
+					      	>
+					      	Instructors
+					      </Link>
+					      <Link
+					      	to="/organisation/contact"
+					      	className="navbar-item"
+					      	>
+					      	Contact
+					      </Link>
+					      <Link
+					      	to="/users/apply"
+					      	className="navbar-item"
+					      	>
+					      	Join acedemy
+					      </Link>
+					      <Link
+					      	to="/users/admin"
+					      	className="navbar-item"
+					      	>
+					      	Dashboard
+					      </Link>
+					      <Link
+					      	to="/organisations/camps"
+					      	className="navbar-item"
+					      	>
+					      	Camps
+					      </Link>
 					      
-					    	<div className="navbar-start">
-									<Link to="/" className="navbar-item">Home</Link>
-
-						      <Link
-						      	to="/users/students"
-						      	className="navbar-item"
-						      	>
-						      	Students
-						      </Link>
-						      <Link
-						      	to="/users/instructors"
-						      	className="navbar-item"
-						      	>
-						      	Instructors
-						      </Link>
-						      <Link
-						      	to="/organisation/contact"
-						      	className="navbar-item"
-						      	>
-						      	Contact
-						      </Link>
-						      <Link
-						      	to="/users/apply"
-						      	className="navbar-item"
-						      	>
-						      	Join acedemy
-						      </Link>
-						      <Link
-						      	to="/users/admin"
-						      	className="navbar-item"
-						      	>
-						      	Dashboard
-						      </Link>
-						      <Link
-						      	to="/organisations/camps"
-						      	className="navbar-item"
-						      	>
-						      	Camps
-						      </Link>
+					      <Link
+					      	to="/organisation/documentation"
+					      	className="navbar-	item"
+					      	>
+					      	Documentation
+					      </Link>
 						      
-						      <Link
-						      	to="/organisation/documentation"
-						      	className="navbar-	item"
-						      	>
-						      	Documentation
-						      </Link>
-							      
-						      <div
-						      	className="navbar-item has-dropdown is-hoverable">
-						        <a className="navbar-link">
-						          More
-						        </a>
+					      <div
+					      	className="navbar-item has-dropdown is-hoverable">
+					        <a className="navbar-link">
+					          More
+					        </a>
 
-						        <div className="navbar-dropdown">
-							      		<Link
-							      			to="/state" 
-							      			className="navbar-item"
-							      			>
-							      			State
-							      		</Link>
-							      		<Link
-							      			to="/district" 
-							      			className="navbar-item"
-							      			>
-							      			District
-							      		</Link>
-								      	<Link
-							      			to="/national" 
-							      			className="navbar-item"
-							      			>
-							      			National
-								      	</Link>
-							      		<Link
-							      			to="/organisations/issues" 
-							      			className="navbar-item"
-							      			>
-							      			Report an issue
-							      		</Link>
-						        </div>
-						      </div>
-						    </div>
+					        <div className="navbar-dropdown">
+						      		<Link
+						      			to="/state" 
+						      			className="navbar-item"
+						      			>
+						      			State
+						      		</Link>
+						      		<Link
+						      			to="/district" 
+						      			className="navbar-item"
+						      			>
+						      			District
+						      		</Link>
+							      	<Link
+						      			to="/national" 
+						      			className="navbar-item"
+						      			>
+						      			National
+							      	</Link>
+						      		<Link
+						      			to="/organisations/issues" 
+						      			className="navbar-item"
+						      			>
+						      			Report an issue
+						      		</Link>
+					        </div>
+					      </div>
+					    </div>
 
-
-				      </div>
-					    </a>
-					  	</div>*/
-						}
-			  	</div>
+			      </div>
+				  </a>
 
 			  	<div id="navbarBasicExample"
 			  	className="navbar-menu">

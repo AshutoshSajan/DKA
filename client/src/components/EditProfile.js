@@ -81,12 +81,21 @@ class EditProfile extends Component {
 			<form
 				encType="multipart/form-data"
 				className="profile-flex onclick-display-main"
-				style={{ marginTop:"1.2rem", boxShadow:" -0.5px -0.5px 0 0 rgba(0,0,0,0.175), 2px 2px 1.2rem 1px rgba(0,0,0,0.175)", padding: "1.2rem 40px", width: "30vw", margin:"1.4rem auto" }}
+				style={{
+						marginTop:"1.2rem",
+						boxShadow:" -0.5px -0.5px 0 0 rgba(0,0,0,0.175), 2px 2px 1.2rem 1px rgba(0,0,0,0.175)",
+						padding: "1.2rem 40px",
+						width: "30vw",
+						margin:"1.4rem auto"
+					}}
 				>
 	      { 
 	        !this.state.loading ?
 	          <div>
-	            <h5 style={{textAlign: "center", color: "red"}}
+	            <h5 style={{
+	            		textAlign:"center",
+	            		color: "red"
+	            	}}
 	            	>
 	            	{ this.state.message || "" }
 	            </h5>
@@ -97,7 +106,13 @@ class EditProfile extends Component {
 	  							placeholder="First name"
 	  							value={this.state.firstName}
 	  							onChange={ this.handleChange }
-	  							style={{width:"20vw", fontSize:'1rem', padding:"0.4 1.2rem", margin: "1.2rem 0", borderBottom:'1px solid #666'}}
+	  							style={{
+	  								width:"20vw",
+	  								fontSize:'1rem',
+	  								padding:"0.4 1.2rem",
+	  								margin: "1.2rem 0",
+	  								borderBottom:'1px solid #666'
+	  							}}
 	  							/>
 
 	  						<input
@@ -106,7 +121,13 @@ class EditProfile extends Component {
 	  							placeholder="Last name"
 	  							value={this.state.lastName}
 	  							onChange={ this.handleChange }
-	  							style={{width:"20vw", fontSize:'1rem', padding:"0.4 1.2rem", margin: "1.2rem 0", borderBottom:'1px solid #666'}}
+	  							style={{
+	  								width:"20vw",
+	  								fontSize:'1rem',
+	  								padding:"0.4 1.2rem",
+	  								margin: "1.2rem 0",
+	  								borderBottom:'1px solid #666'
+	  							}}
 	  							/>
 	  					</div>
 
@@ -116,7 +137,13 @@ class EditProfile extends Component {
 	  						placeholder="Username"
 	  						value={this.state.userName}
 	  						onChange={ this.handleChange }
-	  						style={{width:"20vw", fontSize:'1rem', padding:"0.4 1.2rem", margin: "1.2rem 0", borderBottom:'1px solid #666'}}
+	  						style={{
+	  							width:"20vw",
+	  							fontSize:'1rem',
+	  							padding:"0.4 1.2rem",
+	  							margin: "1.2rem 0",
+	  							borderBottom:'1px solid #666'
+	  						}}
 	  						/>
 
 	  					<input
@@ -126,7 +153,13 @@ class EditProfile extends Component {
 	  						placeholder="Email"
 	  						value={this.state.email}
 	  						onChange={ this.handleChange }
-	  						style={{width:"20vw", fontSize:'1rem', padding:"0.4 1.2rem", margin: "1.2rem 0", borderBottom:'1px solid #666'}}
+	  						style={{
+	  							width:"20vw",
+	  							fontSize:'1rem',
+	  							padding:"0.4 1.2rem",
+	  							margin: "1.2rem 0",
+	  							borderBottom:'1px solid #666'
+	  						}}
 	  						/>
 	  					<input
 	  						type="number"
@@ -134,15 +167,27 @@ class EditProfile extends Component {
 	  						placeholder="Phone Number"
 	  						onChange={ this.handleChange }
 	  						value={this.state.phone} 
-	  						style={{width:"20vw", fontSize:'1rem', padding:"0.4 1.2rem", margin: "1.2rem 0", borderBottom:'1px solid #666'}}
+	  						style={{
+	  							width:"20vw",
+	  							fontSize:'1rem',
+	  							padding:"0.4 1.2rem",
+	  							margin: "1.2rem 0",
+	  							borderBottom:'1px solid #666'
+	  						}}
 	  						/>
 
 	  					<input
 	  						name="dob"
-	  						type="date"
+	  						type="text"
 	  						value={this.state.dob}
 	  						placeholder="Date of Birth"
-	  						style={{width:"20vw", fontSize:'1rem', padding:"0.4 1.2rem", margin: "1.2rem 0", borderBottom:'1px solid #666'}}
+	  						style={{
+	  							width:"20vw",
+	  							fontSize:'1rem',
+	  							padding:"0.4 1.2rem",
+	  							margin: "1.2rem 0",
+	  							borderBottom:'1px solid #666'
+	  						}}
 	  						/>
 
 	  					<input
@@ -151,7 +196,13 @@ class EditProfile extends Component {
 	  						placeholder="9th/Kyu"
 	  						value={this.state.rank}
 	  						onChange={ this.handleChange }
-	  						style={{width:"20vw", fontSize:'1rem', padding:"0.4 1.2rem", margin: "1.2rem 0", borderBottom:'1px solid #666'}}
+	  						style={{
+	  							width:"20vw",
+	  							fontSize:'1rem',
+	  							padding:"0.4 1.2rem",
+	  							margin: "1.2rem 0",
+	  							borderBottom:'1px solid #666'
+	  						}}
 	  						/>
 
   						<input
@@ -160,7 +211,13 @@ class EditProfile extends Component {
 	  						value={this.state.belt}
 	  						placeholder="belt/white"
 	  						onChange={ this.handleChange }
-	  						style={{width:"20vw", fontSize:'1rem', padding:"0.4 1.2rem", margin: "1.2rem 0", borderBottom:'1px solid #666'}}
+	  						style={{
+	  							width:"20vw",
+	  							fontSize:'1rem',
+	  							padding:"0.4 1.2rem",
+	  							margin: "1.2rem 0",
+	  							borderBottom:'1px solid #666'
+	  						}}
   						/>
 
 	  					<input

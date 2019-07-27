@@ -101,7 +101,7 @@ class IssueForm extends Component {
 						id="data_2"
 						name="email"
 						style={{
-							width: "80%"
+							width: "90%"
 						}}
 						onChange={this.handleChange}
 						className="form-control"
@@ -121,7 +121,7 @@ class IssueForm extends Component {
 						id="data_3"
 						name="severity"
 						style={{
-							width : "80%"
+							width : "90%"
 						}}
 						required
 						onChange={this.handleChange}
@@ -147,7 +147,7 @@ class IssueForm extends Component {
 						id="data_4"
 						name="priority"
 						style={{
-							width : "80%"
+							width : "90%"
 						}}
 						required
 						onChange={this.handleChange}
@@ -172,7 +172,7 @@ class IssueForm extends Component {
 						id="data_6"
 						name="summary"
 						style={{
-							width : "80%",
+							width : "90%",
 							border: "1px solid #ced4da"
 						}}
 						required

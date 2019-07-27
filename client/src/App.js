@@ -52,7 +52,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Headers />
+        <Header />
         <Switch>
           <Route exact path="/" component = {Home}/>
         	<Route path="/users/login" component = {Login}/>
