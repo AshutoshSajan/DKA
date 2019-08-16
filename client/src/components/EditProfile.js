@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react';
 import { withRouter } from "react-router-dom";
 import { connect } from 'react-redux';
@@ -69,9 +70,26 @@ class EditProfile extends Component {
     this.setState({ [name]: value });
   }
 
+ //  printFile = (file) => {
+	//   var reader = new FileReader();
+	//   reader.onload = function(evt) {
+	//     console.log(evt.target.result);
+	//   };
+	//   reader.readAsText(file);
+	// }
+
   fileHandler = (e) => {
-  	console.log(e.target.files[0]);
-  	this.setState({ photo: e.target.files[0] });
+  	// console.log(e.target.files[0]);
+
+  	// var reader = new FileReader();
+	  
+	  // var b = reader.onload = (e) {
+	  //   console.log(e.target.result);
+	  // };
+	  // var a = reader.readAsText(file);
+	  // console.log(b, a, "reader");
+
+  	// this.setState({ photo: a });
   }
 
 

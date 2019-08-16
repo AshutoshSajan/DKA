@@ -1,4 +1,4 @@
-var express = require ('express');
+var express = require('express');
 var router = express.Router();
 var jwtAuth = require('../../utils/jwtAuth');
 var userController = require('../../controllers/userController');
@@ -6,7 +6,7 @@ var userController = require('../../controllers/userController');
 router.get('/', jwtAuth.verifyToken, userController.getAllUsers);
 router.post('/login', userController.login);
 router.post('/register', userController.register);
-router.get('/verify-account/:token/:mail', userController.verifyAccount);
+router.get('/verify-account/:token/:email', userController.verifyAccount);
 router.get('/students', jwtAuth.verifyToken, userController.getAllStudents);
 router.put('/update/:id', jwtAuth.verifyToken, userController.updateUser);
 router.delete('/delete/:id', jwtAuth.verifyToken, userController.deleteUser);

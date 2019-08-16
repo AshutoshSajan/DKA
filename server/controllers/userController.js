@@ -1,95 +1,108 @@
-var User = require ('../models/User');
+var User = require('../models/User');
 var jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const mailer = require('../utils/mail');
 const token = require('../utils/token');
 
-// console.log(mailer, mailer.mail, "inside user controller");
-
 module.exports = {
-	getAllUsers: (req,res) => {
-		console.log("getalluser");
+	getAllUsers: (req, res) => {
+		console.log('getalluser');
 
 		User.find({}, (err, users) => {
-			if(err) res.status(500).send(err);
+			if (err) res.status(500).send(err);
 			res.status(200).json({ success: true, users });
-		})
+		});
 	},
 
 	getUser: (req, res) => {
-		console.log(req.params.id, "getuser");
-		User.findOne({ _id: req.params.id }, (err,user) => {
-			if(err) res.status(500).send(err);
+		console.log(req.params.id, 'getuser');
+
+		User.findOne({ _id: req.params.id }, (err, user) => {
+			if (err) res.status(500).send(err);
 			res.status(200).json({ success: true, user });
-		})
+		});
 	},
 
-	login : (req, res) => {
-		console.log(req.body, "login data check1");
-		User.findOne({ email: req.body.email }, (err,user) => {
-			console.log(req.body, "login data check2");
+	login: (req, res) => {
+		console.log(req.body, 'login data check1');
 
-			if(err) return res.status(500).json({ success: false, error: err })
-			if(user){
-				console.log(req.body, "login data check3");
+		User.findOne({ email: req.body.email }, (err, user) => {
+			console.log(req.body, 'login data check2');
+
+			if (err) return res.status(500).json({ success: false, error: err });
+			if (user) {
+				console.log(req.body, 'login data check3');
 
 				var isValidPassword = bcrypt.compareSync(req.body.password, user.password);
-				console.log(isValidPassword, "isValidPassword..");
+				console.log(isValidPassword, 'isValidPassword..');
 				var token = jwt.sign({ id: user._id }, process.env.JWT_SIGN);
-				if(!isValidPassword){
-					console.log(req.body, "login data check4");
+				if (!isValidPassword) {
+					console.log(req.body, 'login data check4');
 
-					res.status(401).json({ success: false, massage: "Invalid pasword" })
-				} else if(isValidPassword){
-					var newUser = Object.keys(user).filter(v => !v === "password" );
-					res.status(200).json({ success: true, user: newUser, token })
+					res.status(401).json({ success: false, massage: 'Invalid pasword' });
+				} else if (isValidPassword) {
+					var newUser = Object.keys(user).filter(v => !v === 'password');
+					res.status(200).json({ success: true, user: newUser, token });
 				}
 			} else {
-				res.status(400).json({ success: false, error: "user does not found"})
+				res.status(400).json({ success: false, error: 'user does not found' });
 			}
-		})
+		});
 	},
 
 	register: (req, res) => {
-		console.log(req.body, "inside register user");
+		console.log(req.body, 'inside register user');
 
 		User.findOne({ email: req.body.email }, (err, user) => {
-			if(err) return res.status(500).json({ success: false, error: err, message: "server side error" });
-			if(user){
-				console.log("user already exist");
-				res.status(302).json({ success: false, message: "User already exist" })
-			} if(!user) {
-				User.create(req.body, (err,user) => {
-					if(err) return res.status(500).json({ success: false, error: err, message: "Server side error" })
-					if(user){
+			if (err) return res.status(500).json({ success: false, error: err, message: 'server side error' });
+			if (user) {
+				console.log('user already exist');
+
+				res.status(302).json({ success: false, message: 'User already exist' });
+			}
+			if (!user) {
+				User.create(req.body, (err, user) => {
+					if (err) return res.status(500).json({ success: false, error: err, message: 'Server side error' });
+					if (user) {
 						user.token = token.generate_token(6);
 						user.save();
-						// mailer.mail(user.email, user.token).catch(console.error);
-						res.status(201).json({ success: true, massage: "user registerd succesfully" })
+						mailer
+							.mail(user.email, user.token, null)
+							.catch(err => (err ? console.error(err) : console.log('mail sent.............')));
+						res.status(201).json({ success: true, massage: 'user registerd succesfully' });
 					}
-				})
+				});
 			}
-		})
+		});
 	},
 
-	verifyToken: (req,res) => {
-		console.log(req.user, "insede verify token /me route");
-		User.findOne({ _id: req.user.id }).select('-password').exec((err,user) => {
-			if(err) return res.status(500).send(err);
-			else return res.status(200).json({ success: true, user });
-		})
+	verifyToken: (req, res) => {
+		console.log(req.user, 'insede verify token /me route');
+
+		User.findOne({ _id: req.user.id })
+			.select('-password')
+			.exec((err, user) => {
+				if (err) return res.status(500).send(err);
+				else return res.status(200).json({ success: true, user });
+			});
 	},
 
-	verifyAccount: (erq,res) => {
+	verifyAccount: (req, res) => {
+		console.log(req.query, 'verifyAccount req.query..............1');
 		var token = req.params.token;
-		var mail = req.params.mail;
+		var email = req.params.email;
 
-		console.log(token, 'inside verifyAccount');
-		User.findOne({ mail }).exec(function(err, user) {
-			if(user) {
-				console.log(user, "user found in verify account");
+		console.log(req.params, token, email, 'inside verifyAccount..........2');
+
+		User.findOne({ email }).exec((err, user) => {
+			if (err) {
+				return res.status(500).json({ success: false, error: err, message: 'server side error' });
+			}
+			if (user) {
+				console.log(user, 'user found in verify account 3');
+
 				user.isVerified = true;
-				user.token = "";
+				user.token = '';
 				user.save();
 				return res.status(200).redirect('/');
 			} else {
@@ -98,50 +111,53 @@ module.exports = {
 		});
 	},
 
-	updateUser : (req,res) => {
-		console.log(req.params.id, req.body, req.user,"inside server updateUser...");
-		User.findOneAndUpdate({ _id: req.user.id }, req.body, { new: true }, (err,user) => {
-			if(err) {
-				console.log("update profile check1...");
+	updateUser: (req, res) => {
+		console.log(req.params.id, req.body, req.user, 'inside server updateUser...');
+
+		User.findOneAndUpdate({ _id: req.user.id }, req.body, { new: true }, (err, user) => {
+			if (err) {
+				console.log('update profile check1...');
+
 				return res.status(500).send(err);
-			} else if(user) {
-				console.log("update profile check2...");
+			} else if (user) {
+				console.log('update profile check2...');
 				res.status(200).json({ success: true, user });
 			}
-		})
+		});
 	},
 
-	deleteUser : (req,res) => {
-		console.log(req.params.id, req.user,"inside server updateUser...");
-		User.findOneAndDelete({ _id: req.user.id }, (err,user) => {
-			if(err) res.status(500).send(err);
+	deleteUser: (req, res) => {
+		console.log(req.params.id, req.user, 'inside server updateUser...');
+
+		User.findOneAndDelete({ _id: req.user.id }, (err, user) => {
+			if (err) res.status(500).send(err);
 			res.status(200).json({ success: true, user });
-		})
+		});
 	},
 
-	getAllStudents: (req,res) => {
-		console.log("inside all students");
+	getAllStudents: (req, res) => {
+		console.log('inside all students');
 
 		User.find({}, (err, users) => {
-			if(err) {
-				return res.status(500).json({ success: false, error: err, massage: "Server error" });
+			if (err) {
+				return res.status(500).json({ success: false, error: err, massage: 'Server error' });
 			}
-			if(users){
+			if (users) {
 				return res.status(200).json({ success: true, users });
 			}
-		})
+		});
 	},
-	
-	getInstructors: (req,res) => {
-		console.log("inside all students");
+
+	getInstructors: (req, res) => {
+		console.log('inside all students');
 
 		User.find({ isSenior: true }, (err, users) => {
-			if(err) {
-				return res.status(500).json({ success: false, error: err, massage: "Server error" });
+			if (err) {
+				return res.status(500).json({ success: false, error: err, massage: 'Server error' });
 			}
-			if(users){
+			if (users) {
 				return res.status(200).json({ success: true, users });
 			}
-		})
+		});
 	}
-}
+};
