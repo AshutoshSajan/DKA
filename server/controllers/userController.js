@@ -41,8 +41,15 @@ module.exports = {
 
 					res.status(401).json({ success: false, massage: 'Invalid pasword' });
 				} else if (isValidPassword) {
-					var newUser = Object.keys(user).filter(v => !v === 'password');
-					res.status(200).json({ success: true, user: newUser, token });
+					User.findOne({ email: user.email })
+						.select('-password')
+						.exec((err, user) => {
+							if (err) {
+								return res.status(500).json({ success: false, error: err });
+							} else if (user) {
+								res.status(200).json({ success: true, user, token });
+							}
+						});
 				}
 			} else {
 				res.status(400).json({ success: false, error: 'user does not found' });
@@ -68,7 +75,7 @@ module.exports = {
 						user.save();
 						mailer
 							.mail(user.email, user.token, null)
-							.catch(err => (err ? console.error(err) : console.log('mail sent.............')));
+							.catch(err => (err ? console.error(err) : console.log('mail sent')));
 						res.status(201).json({ success: true, massage: 'user registerd succesfully' });
 					}
 				});
@@ -88,18 +95,17 @@ module.exports = {
 	},
 
 	verifyAccount: (req, res) => {
-		console.log(req.query, 'verifyAccount req.query..............1');
 		var token = req.params.token;
 		var email = req.params.email;
 
-		console.log(req.params, token, email, 'inside verifyAccount..........2');
+		console.log(req.params, token, email, 'inside verifyAccount');
 
 		User.findOne({ email }).exec((err, user) => {
 			if (err) {
 				return res.status(500).json({ success: false, error: err, message: 'server side error' });
 			}
 			if (user) {
-				console.log(user, 'user found in verify account 3');
+				console.log(user, 'user found in verify account');
 
 				user.isVerified = true;
 				user.token = '';
