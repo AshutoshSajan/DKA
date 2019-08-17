@@ -37,7 +37,6 @@
 	transition: all 300ms ease-in-out;
 }
 
-
 /*hamburger toogle css*/
 
 /*.show {
@@ -54,3 +53,18 @@
 .hide {
 	display: none;
 }*/
+
+/*====================*/
+/*matirialize css*/
+/*====================*/
+.nav-item {
+	color: green !important;
+	/*background: #f4f4f4;*/
+}
+
+.sidenav-hero-sec {
+	position: relative;
+	background-image: url('/flying-kick.png') !important;
+	background-size: cover;
+	width: 100%;
+}

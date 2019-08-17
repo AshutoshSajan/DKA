@@ -1,19 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from "react-redux";
+import { Provider } from 'react-redux';
+import * as serviceWorker from './serviceWorker';
+import 'materialize-css/dist/css/materialize.min.css';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 import './index.css';
-import './stylesheets/reset.css';
-import './stylesheets/style.css';
-import './index.css';
-import './stylesheets/reset.css';
-import store from './store';
 import App from './App';
-import { BrowserRouter as Router } from "react-router-dom";
-import * as serviceWorker from './serviceWorker';
+import store from './store';
 
 ReactDOM.render(
-	<Provider store = { store }>
+	<Provider store={store}>
 		<Router>
 			<App />
 		</Router>
