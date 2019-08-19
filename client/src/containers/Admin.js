@@ -4,7 +4,7 @@ export class Admin extends Component {
 	render() {
 		return (
 			<div>
-				<h2>admin</h2>
+				<h2>Admin dash</h2>
 			</div>
 		);
 	}

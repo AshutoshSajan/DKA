@@ -25,15 +25,15 @@ import Admin from './containers/Admin';
 class App extends Component {
   constructor(props) {
     super(props);
-    var network = navigator.onLine;
-    var netType = navigator.connection.effectiveType;
+    const network = navigator.onLine;
+    const netType = navigator.connection.effectiveType;
     this.state = {
       network,
       netType
     };
   }
   componentDidMount() {
-    var token = localStorage.getItem('jwt') || '';
+    const token = localStorage.getItem('jwt') || '';
     if (token) {
       axios
         .get('http://localhost:3000/api/v1/users/me', {
