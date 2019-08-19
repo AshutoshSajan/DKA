@@ -6,3 +6,8 @@
 @import './stylesheets/picture.css';
 @import './stylesheets/register.css';
 /*@import './stylesheets/contact.scss';*/
+
+.not-found {
+	font-size: 3rem;
+	text-align: center;
+}

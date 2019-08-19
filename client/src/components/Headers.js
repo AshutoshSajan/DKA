@@ -22,11 +22,17 @@ class Headers extends Component {
 		const { user } = this.props || null;
 		console.log(user, 'user heders...');
 		return (
-			<div className="nav-wrapper navbar-fixed">
+			<div className="navbar-fixed">
 				<nav>
 					<div className="nav-wrapper">
 						<a href="#!" className="brand-logo">
-							Logo
+							<img
+								src="/dka.jpeg"
+								alt="website logo"
+								width="80"
+								height="80"
+								style={{ marginLeft: '160%', borderRadius: '50%' }}
+							/>
 						</a>
 
 						<ul id="dropdown1" className="dropdown-content">
@@ -45,9 +51,12 @@ class Headers extends Component {
 						<a href="#" data-target="mobile-demo" className="sidenav-trigger">
 							<i className="material-icons">menu</i>
 						</a>
-						<a href="#!" className="brand-logo">
-							Logo
-						</a>
+
+						{
+							// 	<a href="#!" className="brand-logo">
+							// 	Logo
+							// </a>
+						}
 
 						<ul className="right hide-on-med-and-down">
 							<li>
@@ -78,7 +87,6 @@ class Headers extends Component {
 								Sign-Up
 							</NavLink>
 
-							{/*
 							<li>
 								<NavLink to="/users/students" className="navbar-item">
 									Students
@@ -114,7 +122,6 @@ class Headers extends Component {
 									Documentation
 								</NavLink>
 							</li>
-							*/}
 						</ul>
 					</div>
 				</nav>

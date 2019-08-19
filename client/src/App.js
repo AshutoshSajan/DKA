@@ -82,7 +82,7 @@ class App extends Component {
             <Route path="/organisations/issues" component={IssueForm} />
             <Route path="/users/instructors" component={Instructors} />
             <Route path="/users/edit-profile/:id" component={EditProfile} />
-            <Route render={() => <h1>404 page not found</h1>} />
+            <Route render={() => <h1 className="not-found">404 page not found</h1>} />
           </Switch>
         </div>
       );
