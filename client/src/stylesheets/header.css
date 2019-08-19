@@ -59,12 +59,24 @@
 /*====================*/
 .nav-item {
 	color: green !important;
-	/*background: #f4f4f4;*/
+	font-size: 1rem !important;
 }
 
 .sidenav-hero-sec {
 	position: relative;
 	background-image: url('/flying-kick.png') !important;
 	background-size: cover;
-	width: 100%;
+}
+
+.carousel {
+	height: 30rem;
+}
+
+.carousel .carousel-item {
+	width: 30rem !important;
+	height: 30rem !important;
+}
+
+.nav-wrapper {
+	align-items: center;
 }

@@ -5,7 +5,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var helmet = require('helmet');
-var expressStaticGzip = require("express-static-gzip");
+var expressStaticGzip = require('express-static-gzip');
 var mongoose = require('mongoose');
 
 var indexRouter = require('./server/routes/index');
@@ -19,7 +19,7 @@ app.use(helmet());
 app.set('views', path.join(__dirname, 'server/views'));
 app.set('view engine', 'ejs');
 
-if (process.env.NODE_ENV === "development") {
+if (process.env.NODE_ENV === 'development') {
   app.use(logger('dev'));
 }
 
@@ -29,44 +29,46 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'client/public')));
 
-app.use('/dist/bundle', expressStaticGzip(path.join(__dirname, 'dist/bundle'), {
-  enableBrotli: true,
-  orderPreference: ['br', 'gz'],
-  setHeaders: function (res, path) {
-    res.setHeader("Cache-Control", "public, max-age=31536000");
-  }
-}));
+app.use(
+  '/dist/bundle',
+  expressStaticGzip(path.join(__dirname, 'dist/bundle'), {
+    enableBrotli: true,
+    orderPreference: ['br', 'gz'],
+    setHeaders: function(res, path) {
+      res.setHeader('Cache-Control', 'public, max-age=31536000');
+    }
+  })
+);
 
 // fix depreciation warning.
 mongoose.set('useFindAndModify', false);
 
 // connect to mongodb
-mongoose.connect('mongodb://localhost:27017/DKA', { useNewUrlParser: true }, function (err) {
+mongoose.connect('mongodb://localhost:27017/DKA', { useNewUrlParser: true }, function(err) {
   console.log('connected ?', err ? false : true);
 });
 
 // webpack
-if (process.env.NODE_ENV === "development") {
-  var webpack = require("webpack");
-  var webpackConfig = require("./webpack.config");
+if (process.env.NODE_ENV === 'development') {
+  var webpack = require('webpack');
+  var webpackConfig = require('./webpack.config');
   var compiler = webpack(webpackConfig);
 
   app.use(
-    require("webpack-dev-middleware")(compiler, {
+    require('webpack-dev-middleware')(compiler, {
       noInfo: true,
       publicPath: webpackConfig.output.publicPath
     })
   );
 
-  app.use(require("webpack-hot-middleware")(compiler));
+  app.use(require('webpack-hot-middleware')(compiler));
 }
 
 // Route handler
-app.use('/api/v1', apiRouter)
+app.use('/api/v1', apiRouter);
 app.use('/', indexRouter);
-
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

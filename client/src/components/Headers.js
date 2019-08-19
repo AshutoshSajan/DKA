@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { NavLink, Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import 'materialize-css/dist/css/materialize.min.css';
+// import 'materialize-css/dist/css/materialize.min.css';
 import M from 'materialize-css';
 
 import LoggedInUser from './LoggedInUser';
@@ -13,15 +13,16 @@ class Headers extends Component {
 		var elem = document.querySelector('.sidenav');
 		var instance = M.Sidenav.init(elem, {
 			edge: 'left',
+			fullWidth: true,
 			inDuration: 250
 		});
 	}
 
 	render() {
 		const { user } = this.props || null;
-
+		console.log(user, 'user heders...');
 		return (
-			<div className="navbar-fixed">
+			<div className="nav-wrapper navbar-fixed">
 				<nav>
 					<div className="nav-wrapper">
 						<a href="#!" className="brand-logo">
@@ -44,70 +45,74 @@ class Headers extends Component {
 						<a href="#" data-target="mobile-demo" className="sidenav-trigger">
 							<i className="material-icons">menu</i>
 						</a>
+						<a href="#!" className="brand-logo">
+							Logo
+						</a>
+
 						<ul className="right hide-on-med-and-down">
 							<li>
-								<Link to="/" className="navbar-item">
+								<NavLink to="/" className="navbar-item">
 									Home
-								</Link>
+								</NavLink>
 							</li>
 
 							<li>
-								<Link to="/organisation/about" className="navbar-item">
+								<NavLink to="/organisation/about" className="navbar-item">
 									About
-								</Link>
+								</NavLink>
 							</li>
 
 							<li>
-								<Link to="/organisation/contact" className="navbar-item">
+								<NavLink to="/organisation/contact" className="navbar-item">
 									Contact
-								</Link>
+								</NavLink>
 							</li>
 
 							<li>
-								<Link to="/users/login" className="waves-effect waves-light btn">
+								<NavLink to="/users/login" className="waves-effect waves-light btn">
 									Login
-								</Link>
+								</NavLink>
 							</li>
 
-							<Link to="/users/register" className="waves-effect waves-light btn blue lighten-1">
+							<NavLink to="/users/register" className="waves-effect waves-light btn blue lighten-1">
 								Sign-Up
-							</Link>
+							</NavLink>
 
 							{/*
 							<li>
-								<Link to="/users/students" className="navbar-item">
+								<NavLink to="/users/students" className="navbar-item">
 									Students
-								</Link>
+								</NavLink>
 							</li>
 							<li>
-								<Link to="/users/instructors" className="navbar-item">
+								<NavLink to="/users/instructors" className="navbar-item">
 									Instructors
-								</Link>
+								</NavLink>
 							</li>
 							<li>
-								<Link to="/organisation/contact" className="navbar-item">
+								<NavLink to="/organisation/contact" className="navbar-item">
 									Contact
-								</Link>
+								</NavLink>
 							</li>
 							<li>
-								<Link to="/users/apply" className="navbar-item">
+								<NavLink to="/users/apply" className="navbar-item">
 									Join acedemy
-								</Link>
+								</NavLink>
 							</li>
 							<li>
-								<Link to="/organisations/camps" className="navbar-item">
+								<NavLink to="/organisations/camps" className="navbar-item">
 									Camps
-								</Link>
+								</NavLink>
 							</li>
 							<li>
-								<Link to="/users/admin" className="navbar-item">
+								<NavLink to="/users/admin" className="navbar-item">
 									Dashboard
-								</Link>
+								</NavLink>
 							</li>
 							<li>
-								<Link to="/organisation/documentation" className="navbar-item">
+								<NavLink to="/organisation/documentation" className="navbar-item">
 									Documentation
-								</Link>
+								</NavLink>
 							</li>
 							*/}
 						</ul>
@@ -116,7 +121,63 @@ class Headers extends Component {
 
 				<ul className="sidenav black" id="mobile-demo">
 					<li className="sidenav-hero-sec">
-						<img className="logo" src="/dka.jpeg" alt="logo" width="80" height="80" />
+						<img
+							className="logo"
+							src={user.user && user.user.photo ? user.user.photo : '/karate.svg'}
+							alt="logo"
+							width="80"
+							height="80"
+							style={{
+								borderRadius: '50%',
+								marginLeft: '2rem'
+							}}
+						/>
+						<div>
+							<h3 className="white-text flow-text">{user.user ? user.user.userName : ''}</h3>
+							<h3 className="white-text flow-text">{user.user ? user.user.email : ''}</h3>
+						</div>
+					</li>
+					<li>
+						<NavLink to="/" className="nav-item green-text text-accent-3">
+							Home
+						</NavLink>
+					</li>
+					<li>
+						<NavLink to="/users/students" className="nav-item green-text text-accent-3">
+							Students
+						</NavLink>
+					</li>
+					<li>
+						<NavLink to="/users/instructors" className="nav-item green-text text-accent-3">
+							Instructors
+						</NavLink>
+					</li>
+					<li>
+						<NavLink to="/organisation/contact" className="nav-item green-text text-accent-3">
+							Contact
+						</NavLink>
+					</li>
+					<li>
+						<NavLink to="/users/apply" className="nav-item green-text text-accent-3">
+							Join acedemy
+						</NavLink>
+					</li>
+					<li>
+						<NavLink to="/organisations/camps" className="nav-item green-text text-accent-3">
+							Camps
+						</NavLink>
+					</li>
+					<li>
+						<NavLink to="/users/admin" className="nav-item green-text text-accent-3">
+							Dashboard
+						</NavLink>
+					</li>
+					<li>
+						<NavLink to="/organisation/documentation" className="nav-item green-text text-accent-3">
+							Documentation
+						</NavLink>
+					</li>
+					<li>
 						<a
 							style={{
 								color: '#fff'
@@ -127,46 +188,6 @@ class Headers extends Component {
 						>
 							Logout
 						</a>
-					</li>
-					<li>
-						<Link to="/" className="nav-item">
-							Home
-						</Link>
-					</li>
-					<li>
-						<Link to="/users/students" className="nav-item">
-							Students
-						</Link>
-					</li>
-					<li>
-						<Link to="/users/instructors" className="nav-item">
-							Instructors
-						</Link>
-					</li>
-					<li>
-						<Link to="/organisation/contact" className="nav-item">
-							Contact
-						</Link>
-					</li>
-					<li>
-						<Link to="/users/apply" className="nav-item">
-							Join acedemy
-						</Link>
-					</li>
-					<li>
-						<Link to="/organisations/camps" className="nav-item">
-							Camps
-						</Link>
-					</li>
-					<li>
-						<Link to="/users/admin" className="nav-item">
-							Dashboard
-						</Link>
-					</li>
-					<li>
-						<Link to="/organisation/documentation" className="nav-item">
-							Documentation
-						</Link>
 					</li>
 				</ul>
 			</div>
@@ -187,104 +208,104 @@ class Headers extends Component {
 			// 		<div>
 			// 			<ul className="navbar-item">
 			// 				<li>
-			// 					<Link
+			// 					<NavLink
 			// 						to="/"
 			// 						className="navbar-item"
 			// 						>
 			// 						Home
-			// 					</Link>
+			// 					</NavLink>
 			// 				</li>
 			// 				<li>
-			// 		      <Link
+			// 		      <NavLink
 			// 		      	to="/users/students"
 			// 		      	className="navbar-item"
 			// 		      	>
 			// 		      	Students
-			// 		      </Link>
+			// 		      </NavLink>
 			// 		    </li>
 			// 		    <li>
-			// 		      <Link
+			// 		      <NavLink
 			// 		      	to="/users/instructors"
 			// 		      	className="navbar-item"
 			// 		      	>
 			// 		      	Instructors
-			// 		      </Link>
+			// 		      </NavLink>
 			// 		    </li>
 			// 	      <li>
-			// 		      <Link
+			// 		      <NavLink
 			// 		      	to="/organisation/contact"
 			// 		      	className="navbar-item"
 			// 		      	>
 			// 		      	Contact
-			// 		      </Link>
+			// 		      </NavLink>
 			// 		    </li>
 			// 		    <li>
-			// 		      <Link
+			// 		      <NavLink
 			// 		      	to="/users/apply"
 			// 		      	className="navbar-item"
 			// 		      	>
 			// 		      	Join acedemy
-			// 		      </Link>
+			// 		      </NavLink>
 			// 		    </li>
 			// 		    <li>
-			// 		      <Link
+			// 		      <NavLink
 			// 		      	to="/organisations/camps"
 			// 		      	className="navbar-item"
 			// 		      	>
 			// 		      	Camps
-			// 		      </Link>
+			// 		      </NavLink>
 			// 		    </li>
 			// 		    <li>
-			// 		      <Link
+			// 		      <NavLink
 			// 		      	to="/users/admin"
 			// 		      	className="navbar-item"
 			// 		      	>
 			// 		      	Dashboard
-			// 		      </Link>
+			// 		      </NavLink>
 			// 		    </li>
 			// 		    <li>
-			// 		      <Link
+			// 		      <NavLink
 			// 		      	to="/organisation/documentation"
 			// 		      	className="navbar-item"
 			// 		      	>
 			// 		      	Documentation
-			// 		      </Link>
+			// 		      </NavLink>
 			// 		    </li>
 
 			// 				<li className="hoverable-dropdown">
 			// 					<ul>
 			// 						<li>
 			// 							More
-			// 							<Link
+			// 							<NavLink
 			// 		      			to="/state"
 			// 		      			className="navbar-item"
 			// 		      			>
 			// 		      			State
-			// 		      		</Link>
+			// 		      		</NavLink>
 			// 		      	</li>
 			// 		      	<li>
-			// 		      		<Link
+			// 		      		<NavLink
 			// 		      			to="/district"
 			// 		      			className="navbar-item"
 			// 		      			>
 			// 		      			District
-			// 		      		</Link>
+			// 		      		</NavLink>
 			// 		      	</li>
 			// 		      	<li>
-			// 			      	<Link
+			// 			      	<NavLink
 			// 		      			to="/national"
 			// 		      			className="navbar-item"
 			// 		      			>
 			// 		      			National
-			// 			      	</Link>
+			// 			      	</NavLink>
 			// 			      </li>
 			// 			      <li>
-			// 		      		<Link
+			// 		      		<NavLink
 			// 		      			to="/organisations/issues"
 			// 		      			className="navbar-item"
 			// 		      			>
 			// 		      			Report an issue
-			// 		      		</Link>
+			// 		      		</NavLink>
 			// 						</li>
 			// 					</ul>
 			// 				</li>
@@ -297,16 +318,16 @@ class Headers extends Component {
 			// 			!user.user && user.isAuthInProgress ?
 			// 	      <div className="navbar-item">
 			// 	        <div className="buttons">
-			// 	          <Link
+			// 	          <NavLink
 			// 							to="/users/register"
 			// 			      	className="button is-primary">
 			// 			      	Sign-Up
-			// 			      </Link>
-			// 	          <Link
+			// 			      </NavLink>
+			// 	          <NavLink
 			// 		      		to="/users/login"
 			// 		      		className="button is-primary">
 			// 		      		Login
-			// 		      	</Link>
+			// 		      	</NavLink>
 			// 	        </div>
 			// 	      </div>
 			//      	:

@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
+
 import Pictures from './Pictures';
+import Crousal from './Crousal';
 
 class Home extends Component {
-
 	render() {
-		return ( 
+		return (
 			<div>
+				<Crousal />
 				<Pictures />
 			</div>
 		);
