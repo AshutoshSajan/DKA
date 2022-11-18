@@ -44,7 +44,7 @@
     "prettier": "1.18.2",
     "sass-loader": "^7.2.0",
     "webpack": "^4.39.2",
-    "webpack-cli": "^3.3.4",
+    "webpack-cli": "^3.3.12",
     "webpack-dev-middleware": "^3.7.0",
     "webpack-hot-middleware": "^2.25.0"
   }
